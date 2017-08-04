@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 
 import { userAdd, userDelete, userUpdate } from './../actions/userActions';
 import ListItem from './../components/ListItem';
+import AddUser from './../components/AddUser';
 
+import './App.css';
 
 function mapStateToProps(store) {
   return {
@@ -15,6 +17,11 @@ class App extends Component {
 
   showProps() {
     console.log(this.props);
+  }
+
+  userAdd(user) {
+    console.log('Called userAdd ' + user.fullname);
+    this.props.dispatch(userAdd(user));
   }
 
   userUpdate(user) {
@@ -31,8 +38,8 @@ class App extends Component {
 
     const userList = this.props.list.map((user) => {
       return (
-        // Add key
         <ListItem
+          key={user.id}
           user={user}
           userUpdate={this.userUpdate.bind(this)}
           userDelete={this.userDelete.bind(this)}
@@ -44,12 +51,12 @@ class App extends Component {
       <div className='container'>
         <h2>User List Redux App</h2>
         <hr />
+        <AddUser
+          userAdd={this.userAdd.bind(this)}
+        />
         <div>
-          <button className='btn btn-default' onClick={this.showProps.bind(this)}>
+          <button className='btn btn-default mr-2' onClick={this.showProps.bind(this)}>
             Show Props
-          </button>
-          <button onClick={() => this.props.dispatch(userAdd({ id: 7, fullname: 'Mr New User', age: 56}))}>
-            Add User
           </button>
         </div>
         <hr />

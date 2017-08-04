@@ -1,7 +1,7 @@
-export function userAdd(name) {
+export function userAdd(user) {
   return {
     type: 'USER_ADD',
-    payload: name
+    payload: user
   }
 }
 
