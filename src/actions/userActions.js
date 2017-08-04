@@ -12,9 +12,13 @@ export function userDelete(user) {
   }
 }
 
-export function userUpdate(name) {
+export function userUpdate(id, fullname, age) {
   return {
     type: 'USER_UPDATE',
-    payload: name
+    payload: {
+      id,
+      fullname,
+      age
+    }
   }
 }

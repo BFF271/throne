@@ -34,9 +34,13 @@ export default function reducer(
         }
       }
       case 'USER_UPDATE': {
-        const newList = [...state.list];
-        const userIndex = newList.findIndex(user => user === action.payload);
-        newList[userIndex] = 'UPDATED USER';
+        let newList = [...state.list];
+        
+        const userIndex = newList.findIndex((user) => {
+          return user.id === action.payload.id;
+        });
+
+        newList[userIndex] = action.payload;
         return {
           list: newList
         }

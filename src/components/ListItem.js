@@ -1,5 +1,9 @@
 // Dumb Component
+// TODO --- Only show edit forms once edit user has been clicked,
+// Hide any other edit forms that are currently active.
 import React, { Component } from 'react';
+
+import EditUser from './EditUser';
 
 class ListItem extends Component{
 
@@ -26,14 +30,11 @@ class ListItem extends Component{
             </button>
           </div>
         </div>
-        {/* <div id={this.props.user.id} className="row u-display--none">
-          <EditUser user={this.props.user} updateUser={this.props.updateUser} />
-        </div> */}
-      </div>
 
-      // <div>
-      //   <li onClick={() => this.props.userUpdate(this.props.user)}>{this.props.user.fullname}</li>
-      // </div>
+        <div>
+          <EditUser user={this.props.user} userUpdate={this.props.userUpdate} />
+        </div>
+      </div>
     )
   }
 }

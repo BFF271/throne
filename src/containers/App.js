@@ -20,17 +20,14 @@ class App extends Component {
   }
 
   userAdd(user) {
-    console.log('Called userAdd ' + user.fullname);
     this.props.dispatch(userAdd(user));
   }
 
-  userUpdate(user) {
-    console.log('Called userUpdate ' + user.fullname);
-    this.props.dispatch(userUpdate(user));
+  userUpdate(id, fullname, age) {
+    this.props.dispatch(userUpdate(id, fullname, age));
   }
 
   userDelete(user) {
-    console.log('Called userDelete ' + user.fullname);
     this.props.dispatch(userDelete(user));
   }
 

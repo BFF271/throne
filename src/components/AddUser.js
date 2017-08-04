@@ -1,15 +1,17 @@
+// Dumb Component
+// I will leave the state for handling input changes in here, there is no
+// need in moving it to redux as it only affects the form here.
 import React, { Component } from 'react';
 
 class AddUser extends Component {
-  // I will leave the state for handling input changes in here, there is no
-  // point in moving it to redux as it only affects the form here.
-
   constructor() {
     super();
     this.state = {
       fullname: '',
       age: ''
     }
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInputChange(e) {
@@ -38,13 +40,13 @@ class AddUser extends Component {
       <div>
         <h4>Create A New User</h4>
         <hr />
-        <form className="form-inline" onSubmit={this.handleSubmit.bind(this)}>
+        <form className="form-inline" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label>Name</label>
             <input
               name="fullname"
               value={this.state.fullname}
-              onChange={this.handleInputChange.bind(this)}
+              onChange={this.handleInputChange}
               className="form-control"
               type="text"/>
           </div>
@@ -54,11 +56,15 @@ class AddUser extends Component {
             <input
               name="age"
               value={this.state.age}
-              onChange={this.handleInputChange.bind(this)}
+              onChange={this.handleInputChange}
               className="form-control"
               type="text"/>
           </div>
-          <input type='submit' value='Add Blah' className='btn btn-success' />
+          <input
+            type='submit'
+            value='Add Blah'
+            className='btn btn-success'
+          />
         </form>
         <hr/>
       </div>
