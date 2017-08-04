@@ -5,10 +5,10 @@ export function userAdd(name) {
   }
 }
 
-export function userDelete(name) {
+export function userDelete(user) {
   return {
     type: 'USER_DELETE',
-    payload: name
+    payload: user
   }
 }
 
