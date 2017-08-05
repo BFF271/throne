@@ -3,7 +3,7 @@
 // need in moving it to redux as it only affects the form here.
 import React, { Component } from 'react';
 
-class AddUser extends Component {
+class SignUp extends Component {
   constructor() {
     super();
     this.state = {
@@ -72,4 +72,4 @@ class AddUser extends Component {
   }
 }
 
-export default AddUser;
+export default SignUp;

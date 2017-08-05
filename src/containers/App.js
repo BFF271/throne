@@ -9,7 +9,8 @@ import { userAdd, userDelete, userUpdate } from './../actions/userActions';
 import Home from './../containers/Home';
 import Header from './../components/Header';
 import ListItem from './../components/ListItem';
-import AddUser from './../components/AddUser';
+import SignUp from './../containers/SignUp';
+
 
 import './App.css';
 
@@ -55,7 +56,13 @@ class App extends Component {
         <div className='container'>
           <Header />
           <Route exact path='/' component={Home} />
-          <AddUser userAdd={this.userAdd.bind(this)} />
+          <Route path='/signup' component={() => {
+            return <SignUp userAdd={this.userAdd.bind(this)} />
+          }}/>
+          { /* UserSearch */ }
+          { /* Profile */}
+
+
           <div>
             <button className='btn btn-default mr-2' onClick={this.showProps.bind(this)}>
               Show Props

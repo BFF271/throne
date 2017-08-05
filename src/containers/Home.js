@@ -27,6 +27,8 @@ class Home extends Component {
           <li>Comment on users profile wall</li>
           <li>Reply to comments on your own or friends walls</li>
           <li>Remove comments and images from your own profile</li>
+          <li>Abilty to sign out</li>
+          <li>Abilty to delete your own account, this will delete your user, all images associated with it, all comments</li>
           <li>more features to come...</li>
         </ul>
         <hr />
