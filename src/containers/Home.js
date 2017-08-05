@@ -32,6 +32,12 @@ class Home extends Component {
           <li>Abilty to delete your own account, this will delete your user, all images associated with it, all comments</li>
           <li>more features to come...</li>
         </ul>
+
+        <hr />
+        <h4>Details</h4>
+        <ul>
+          <li>Represent user profile page by user id</li>
+        </ul>
         <hr />
       </div>
     )

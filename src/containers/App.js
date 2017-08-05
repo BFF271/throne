@@ -10,6 +10,7 @@ import Home from './../containers/Home';
 import Header from './../components/Header';
 import List from './../containers/List';
 import SignUp from './../containers/SignUp';
+import Profile from './../containers/Profile';
 
 
 import './App.css';
@@ -48,17 +49,24 @@ class App extends Component {
             return <SignUp userAdd={this.userAdd.bind(this)} />
           }}/>
           <Route path='/list' component={() => {
-            return <List list={this.props.list} userUpdate={this.userUpdate.bind(this)} userDelete={this.userDelete.bind(this)} />
+            return (
+              <List
+                list={this.props.list}
+                userUpdate={this.userUpdate.bind(this)}
+                userDelete={this.userDelete.bind(this)}
+              />
+            )
           }}/>
           { /* Profile */}
-
+          <Profile />
 
           <div>
+            <hr />
             <button className='btn btn-default mr-2' onClick={this.showProps.bind(this)}>
               Show Props
             </button>
+            <hr />
           </div>
-          <hr />
         </div>
       </BrowserRouter>
     );
