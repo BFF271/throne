@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { BrowserRouter, Route } from 'react-router-dom';
 
+// Actions
 import { userAdd, userDelete, userUpdate } from './../actions/userActions';
+
+// Components
+import Home from './../containers/Home';
+import Header from './../components/Header';
 import ListItem from './../components/ListItem';
 import AddUser from './../components/AddUser';
 
@@ -45,22 +51,22 @@ class App extends Component {
     });
 
     return (
-      <div className='container'>
-        <h2>User List Redux App</h2>
-        <hr />
-        <AddUser
-          userAdd={this.userAdd.bind(this)}
-        />
-        <div>
-          <button className='btn btn-default mr-2' onClick={this.showProps.bind(this)}>
-            Show Props
-          </button>
+      <BrowserRouter>
+        <div className='container'>
+          <Header />
+          <Route exact path='/' component={Home} />
+          <AddUser userAdd={this.userAdd.bind(this)} />
+          <div>
+            <button className='btn btn-default mr-2' onClick={this.showProps.bind(this)}>
+              Show Props
+            </button>
+          </div>
+          <hr />
+          <div>
+            {userList}
+          </div>
         </div>
-        <hr />
-        <div>
-          {userList}
-        </div>
-      </div>
+      </BrowserRouter>
     );
   }
 }
