@@ -37,6 +37,7 @@ class Home extends Component {
         <h4>Details</h4>
         <ul>
           <li>Represent user profile page by user id</li>
+          <li>Leave user profile link as /profile/:id for now, however I may change it just to /:id as facebook does</li>
         </ul>
         <hr />
       </div>

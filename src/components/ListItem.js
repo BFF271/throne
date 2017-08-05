@@ -1,7 +1,6 @@
 // Dumb Component
-// TODO --- Only show edit forms once edit user has been clicked,
-// Hide any other edit forms that are currently active.
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import EditUser from './EditUser';
 
@@ -17,9 +16,11 @@ class ListItem extends Component{
             </h4>
           </div>
           <div className="col-md-6">
-            <button className="btn btn-default u-inline-block mr-2">
-              View User
-            </button>
+            <Link to={`/profile/${this.props.user.id}`}>
+              <button className="btn btn-default u-inline-block mr-2">
+                View User
+              </button>
+            </Link>
             <button
               className="btn btn-default u-inline-block mr-2"
               onClick={() => this.showEditable(this.props.user.id)}>

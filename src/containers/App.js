@@ -27,6 +27,7 @@ class App extends Component {
     console.log(this.props);
   }
 
+  // These can potentially be moved out and instead change to using mapDispatchToProps for easier import.
   userAdd(user) {
     this.props.dispatch(userAdd(user));
   }
@@ -48,7 +49,7 @@ class App extends Component {
           <Route path='/signup' component={() => {
             return <SignUp userAdd={this.userAdd.bind(this)} />
           }}/>
-          <Route path='/list' component={() => {
+          <Route exact path='/list' component={() => {
             return (
               <List
                 list={this.props.list}
@@ -57,8 +58,13 @@ class App extends Component {
               />
             )
           }}/>
-          { /* Profile */}
-          <Profile />
+
+          { /* Pass in the react-router-dom props via props. Gives access to .match so I can search user id */}
+          <Route path='/profile/:id' render={(props) => {
+            return (
+              <Profile list={this.props.list} {...props} />
+            )
+          }}/>
 
           <div>
             <hr />

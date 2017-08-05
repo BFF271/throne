@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 
 class Profile extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+    // This should be moved to initialisation and also a check should be put in to see if the user exists, if it does not, goto a page with cannot be found.
+    const user = this.props.list.find((user) => {
+      return user.id === Number(this.props.match.params.id);
+    });
+
     return (
       <div>
         <div className='row'>
@@ -12,13 +22,11 @@ class Profile extends Component {
           <div className='col-md-6'>
             <img className='img-responsive' src='http://loremflickr.com/800/600' />
           </div>
-          <div>
-            <h4>Name: userName</h4>
-            <h4>Age: userAge</h4>
+          <div className='col-md-6'>
+            <h4>Name: {user.fullname}</h4>
+            <h4>Age: {user.age}</h4>
             <h4>Country: userCountry</h4>
-          </div>
-          <hr />
-          <div>
+            <hr />
             <h1>FRIENDS</h1>
           </div>
         </div>
