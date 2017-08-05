@@ -8,7 +8,7 @@ import { userAdd, userDelete, userUpdate } from './../actions/userActions';
 // Components
 import Home from './../containers/Home';
 import Header from './../components/Header';
-import ListItem from './../components/ListItem';
+import List from './../containers/List';
 import SignUp from './../containers/SignUp';
 
 
@@ -39,18 +39,6 @@ class App extends Component {
   }
 
   render() {
-
-    const userList = this.props.list.map((user) => {
-      return (
-        <ListItem
-          key={user.id}
-          user={user}
-          userUpdate={this.userUpdate.bind(this)}
-          userDelete={this.userDelete.bind(this)}
-        />
-      )
-    });
-
     return (
       <BrowserRouter>
         <div className='container'>
@@ -59,7 +47,9 @@ class App extends Component {
           <Route path='/signup' component={() => {
             return <SignUp userAdd={this.userAdd.bind(this)} />
           }}/>
-          { /* UserSearch */ }
+          <Route path='/list' component={() => {
+            return <List list={this.props.list} userUpdate={this.userUpdate.bind(this)} userDelete={this.userDelete.bind(this)} />
+          }}/>
           { /* Profile */}
 
 
@@ -69,9 +59,6 @@ class App extends Component {
             </button>
           </div>
           <hr />
-          <div>
-            {userList}
-          </div>
         </div>
       </BrowserRouter>
     );
