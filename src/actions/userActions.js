@@ -1,3 +1,13 @@
+export function userLogin(username, password) {
+  return {
+    type: 'LOG_IN',
+    payload: {
+      username,
+      password
+    }
+  }
+}
+
 export function userAdd(user) {
   return {
     type: 'USER_ADD',

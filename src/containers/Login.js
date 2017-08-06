@@ -1,5 +1,8 @@
 // Dumb Component
 import React, { Component } from 'react';
+import { userLogin } from './../actions/userActions';
+import { connect } from 'react-redux';
+
 
 class Login extends Component {
   constructor() {
@@ -21,10 +24,8 @@ class Login extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.userLogin(
-      this.state.username,
-      this.state.password
-    )
+    this.props.dispatch(userLogin(this.state.username, this.state.password));
+
     // Reset the inputs
     this.setState({
       username: '',
@@ -70,4 +71,5 @@ class Login extends Component {
   }
 }
 
-export default Login;
+// By passing nothing to connect it still gives access to dispatch as a prop, which is useful in this case, I do not need mapstatetoprops here.
+export default connect()(Login);

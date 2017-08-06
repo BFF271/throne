@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 // Actions
-import { userDelete, userUpdate } from './../actions/userActions';
-import { userLogin, userLogout } from './../actions/loginActions';
+import { userDelete, userUpdate, userLogin, userLogout } from './../actions/userActions';
 
 // Components
 import Home from './../containers/Home';
@@ -13,33 +12,21 @@ import List from './../containers/List';
 import SignUp from './../containers/SignUp';
 import Login from './../containers/Login';
 import Profile from './../containers/Profile';
+import DevBar from './../components/DevBar';
 
 
 import './App.css';
 
 function mapStateToProps(store) {
   return {
-    list: store.users.list,
-    loginInfo: store.loginInfo.loginInfo
+    activeUser: store.users.activeUser,
+    list: store.users.list
   }
 }
 
 class App extends Component {
 
-  showProps() {
-    console.log(this.props);
-  }
-
-  clearStorage() {
-    localStorage.removeItem('socialReduxState');
-  }
-
   // These can potentially be moved out and instead change to using mapDispatchToProps for easier import.
-
-  userLogin(username, password) {
-    this.props.dispatch(userLogin(username, password, this.props.list));
-  }
-
   userUpdate(id, fullname, age) {
     this.props.dispatch(userUpdate(id, fullname, age));
   }
@@ -52,12 +39,10 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className='container'>
-          <Header activeUser={this.props.loginInfo.activeUser}/>
+          <Header />
           <Route exact path='/' component={Home} />
           <Route path='/signup' component={SignUp} />
-          <Route path='/login' component={() => {
-            return <Login userLogin={this.userLogin.bind(this)} />
-          }}/>
+          <Route path='/login' component={Login}/>
           <Route exact path='/list' component={() => {
             return (
               <List
@@ -74,17 +59,7 @@ class App extends Component {
               <Profile list={this.props.list} {...props} />
             )
           }}/>
-
-          <div>
-            <hr />
-            <button className='btn btn-default mr-2' onClick={this.showProps.bind(this)}>
-              Show Props
-            </button>
-            <button className='btn btn-default mr-2' onClick={this.clearStorage.bind(this)}>
-              Clear Storage
-            </button>
-            <hr />
-          </div>
+          <DevBar props={this.props}/>
         </div>
       </BrowserRouter>
     );

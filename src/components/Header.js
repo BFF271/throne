@@ -13,7 +13,6 @@ class Header extends Component {
           <h5 className='u-inline-block mr-2'><Link to='/list'>List</Link></h5>
         </div>
         <div className="col-md-6">
-          <h2>Logged in as {this.props.activeUser.username}</h2>
         </div>
 
         <div className="col-md-12">

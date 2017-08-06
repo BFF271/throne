@@ -1,5 +1,6 @@
 export default function reducer(
   state = {
+    activeUser: -1,
     list: [
       { id: 1, username: 'steveaustin', password: 'password', fullname: 'Steve Austin', age: 34 },
       { id: 2, username: 'hulkhogan', password: 'password', fullname: 'Hulk Hogan', age: 60 },
@@ -7,6 +8,19 @@ export default function reducer(
     ]
   }, action) {
     switch(action.type) {
+      case 'LOG_IN': {
+        // Check to see if the user exists with the correct password
+        const activeUser = state.list.find((user) => {
+          return ((user.username === action.payload.username) && (user.password === action.payload.password));
+        })
+
+        if(activeUser === undefined) {
+          console.log('WRONG');
+        }
+        else {
+          console.log('RIGHT');
+        }
+      }
       case 'USER_ADD': {
         // When adding a new user I am 'for now' simply going to give it the
         // Id of the highest id value + 1 from the current list array
