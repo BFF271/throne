@@ -1,6 +1,9 @@
 export default function reducer(
   state = {
-    activeUser: -1,
+    activeUser: {
+      loggedIn: false,
+      user: {}
+    },
     list: [
       { id: 1, username: 'steveaustin', password: 'password', fullname: 'Steve Austin', age: 34 },
       { id: 2, username: 'hulkhogan', password: 'password', fullname: 'Hulk Hogan', age: 60 },
@@ -16,10 +19,22 @@ export default function reducer(
 
         if(activeUser === undefined) {
           // If user log in failed return -1 (-1 means noone logged in)
-          return {...state, activeUser: -1};
+          return {
+            ...state,
+            activeUser: {
+              loggedIn: false,
+              user: {}
+            }
+          };
         }
         else {
-          return {...state, activeUser: activeUser.id};
+          return {
+            ...state,
+            activeUser: {
+              loggedIn: true,
+              user: activeUser
+            }
+          }
         }
       }
       case 'USER_ADD': {

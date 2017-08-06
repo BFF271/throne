@@ -39,7 +39,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className='container'>
-          <Header />
+          <Header activeUser={this.props.activeUser}/>
           <Route exact path='/' component={Home} />
           <Route path='/signup' component={SignUp} />
           <Route path='/login' component={Login}/>
