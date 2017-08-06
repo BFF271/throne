@@ -21,11 +21,6 @@ class ListItem extends Component{
                 View User
               </button>
             </Link>
-            <button
-              className="btn btn-default u-inline-block mr-2"
-              onClick={() => this.showEditable(this.props.user.id)}>
-              Edit User
-            </button>
             <button className="btn btn-danger u-inline-block" onClick={() => this.props.userDelete(this.props.user)}>
               Delete User
             </button>

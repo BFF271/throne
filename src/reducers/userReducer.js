@@ -37,6 +37,7 @@ export default function reducer(
           }
         }
       }
+
       case 'LOG_OUT': {
         const noUser = {};
         return {
@@ -47,6 +48,7 @@ export default function reducer(
           }
         }
       }
+
       case 'USER_ADD': {
         // Set new user id as +1 of the highest id (Would be done by DB)
         const highestIndex = Math.max.apply(Math, state.list.map((user) => {
@@ -65,8 +67,11 @@ export default function reducer(
         }
       }
 
-      // User Delete, can only be delete id that user is logged in
+      // Create a new array from list, that doesn't include the user to delete
       case 'USER_DELETE': {
+        // When you delete your account, you also need to be logged out as that user no longer exists
+        console.log('Deleting');
+        console.log(action.payload);
         return {
           ...state,
           list: state.list.filter((user) => {
