@@ -19,8 +19,6 @@ class EditUser extends Component {
     // Update the input changes
     this.setState({
       [e.target.name]: e.target.value
-    },() =>{
-      return console.log(this.state);
     })
   }
 

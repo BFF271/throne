@@ -15,17 +15,15 @@ export default function reducer(
         })
 
         if(activeUser === undefined) {
-          console.log('WRONG');
+          // If user log in failed return -1 (-1 means noone logged in)
+          return {...state, activeUser: -1};
         }
         else {
-          console.log('RIGHT');
+          return {...state, activeUser: activeUser.id};
         }
       }
       case 'USER_ADD': {
-        // When adding a new user I am 'for now' simply going to give it the
-        // Id of the highest id value + 1 from the current list array
-
-        // Get the highest index of the current list
+        // Set new user id as +1 of the highest id (Would be done by DB)
         const highestIndex = Math.max.apply(Math, state.list.map((user) => {
           return user.id;
         }));
@@ -35,18 +33,24 @@ export default function reducer(
 
         // Add the new user to the list
         return {
+          ...state,
           list: [
             ...state.list, newUser
           ]
         }
       }
+
+      // User Delete, can only be delete id that user is logged in
       case 'USER_DELETE': {
         return {
+          ...state,
           list: state.list.filter((user) => {
             return user !== action.payload;
           })
         }
       }
+
+      // User Update, can only be updated if that user is logged in
       case 'USER_UPDATE': {
         let newList = [...state.list];
 
@@ -56,6 +60,7 @@ export default function reducer(
 
         newList[userIndex] = action.payload;
         return {
+          ...state,
           list: newList
         }
       }
