@@ -12,7 +12,7 @@ class ListItem extends Component{
         <div className="row">
           <div className="col-md-6">
             <h4 className="u-inline-block">
-              {this.props.user.fullname}: {this.props.user.age}
+              {this.props.user.username}: {this.props.user.age}
             </h4>
           </div>
           <div className="col-md-6">

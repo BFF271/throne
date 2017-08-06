@@ -1,14 +1,12 @@
 // Dumb Component
-// I will leave the state for handling input changes in here, there is no
-// need in moving it to redux as it only affects the form here.
 import React, { Component } from 'react';
 
-class SignUp extends Component {
+class Login extends Component {
   constructor() {
     super();
     this.state = {
-      fullname: '',
-      age: ''
+      username: '',
+      password: ''
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,14 +21,14 @@ class SignUp extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.userAdd({
-      fullname: this.state.fullname,
-      age: this.state.age
-    })
+    this.props.userLogin(
+      this.state.username,
+      this.state.password
+    )
     // Reset the inputs
     this.setState({
-      fullname: '',
-      age: ''
+      username: '',
+      password: ''
     })
   }
 
@@ -38,31 +36,31 @@ class SignUp extends Component {
   render() {
     return (
       <div>
-        <h4>Create A New User</h4>
+        <h4>Log In</h4>
         <hr />
         <form className="form-inline" onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label>Name</label>
+            <label>Username</label>
             <input
-              name="fullname"
-              value={this.state.fullname}
+              name="username"
+              value={this.state.username}
               onChange={this.handleInputChange}
               className="form-control"
               type="text"/>
           </div>
 
           <div className="form-group">
-            <label>Age</label>
+            <label>Password</label>
             <input
-              name="age"
-              value={this.state.age}
+              name="password"
+              value={this.state.password}
               onChange={this.handleInputChange}
               className="form-control"
               type="text"/>
           </div>
           <input
             type='submit'
-            value='Sign Up'
+            value='Log In'
             className='btn btn-success'
           />
         </form>
@@ -72,4 +70,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default Login;
