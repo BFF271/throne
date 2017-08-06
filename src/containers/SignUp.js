@@ -2,11 +2,21 @@
 // I will leave the state for handling input changes in here, there is no
 // need in moving it to redux as it only affects the form here.
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { userAdd } from './../actions/userActions';
+
+function mapStateToProps(store) {
+  return {
+    list: store.users.list
+  }
+}
 
 class SignUp extends Component {
   constructor() {
     super();
     this.state = {
+      username: '',
+      password: '',
       fullname: '',
       age: ''
     }
@@ -23,12 +33,19 @@ class SignUp extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.userAdd({
-      fullname: this.state.fullname,
-      age: this.state.age
-    })
+
+    this.props.dispatch(
+      userAdd({
+        username: this.state.username,
+        password: this.state.password,
+        fullname: this.state.fullname,
+        age: this.state.age
+      }));
+
     // Reset the inputs
     this.setState({
+      username: '',
+      password: '',
       fullname: '',
       age: ''
     })
@@ -40,9 +57,27 @@ class SignUp extends Component {
       <div>
         <h4>Create A New User</h4>
         <hr />
-        <form className="form-inline" onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label>Name</label>
+            <label>Username</label>
+            <input
+              name="username"
+              value={this.state.username}
+              onChange={this.handleInputChange}
+              className="form-control"
+              type="text"/>
+          </div>
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              name="password"
+              value={this.state.password}
+              onChange={this.handleInputChange}
+              className="form-control"
+              type="text"/>
+          </div>
+          <div className="form-group">
+            <label>Fullname</label>
             <input
               name="fullname"
               value={this.state.fullname}
@@ -50,7 +85,6 @@ class SignUp extends Component {
               className="form-control"
               type="text"/>
           </div>
-
           <div className="form-group">
             <label>Age</label>
             <input
@@ -66,10 +100,10 @@ class SignUp extends Component {
             className='btn btn-success'
           />
         </form>
-        <hr/>
       </div>
     )
   }
 }
+export default connect(mapStateToProps)(SignUp);
 
-export default SignUp;
+// export default SignUp;

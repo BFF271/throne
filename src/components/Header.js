@@ -7,10 +7,10 @@ class Header extends Component {
     return (
       <div className='row'>
         <div className="col-md-6">
-          <h2><Link to='/'>Home</Link></h2>
-          <h2><Link to='/signup'>Sign Up</Link></h2>
-          <h2><Link to='/login'>Log In</Link></h2>
-          <h2><Link to='/list'>List</Link></h2>
+          <h5 className='u-inline-block mr-2'><Link to='/'>Home</Link></h5>
+          <h5 className='u-inline-block mr-2'><Link to='/signup'>Sign Up</Link></h5>
+          <h5 className='u-inline-block mr-2'><Link to='/login'>Log In</Link></h5>
+          <h5 className='u-inline-block mr-2'><Link to='/list'>List</Link></h5>
         </div>
         <div className="col-md-6">
           <h2>Logged in as {this.props.activeUser.username}</h2>

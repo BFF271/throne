@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 // Actions
-import { userAdd, userDelete, userUpdate } from './../actions/userActions';
+import { userDelete, userUpdate } from './../actions/userActions';
 import { userLogin, userLogout } from './../actions/loginActions';
 
 // Components
@@ -40,10 +40,6 @@ class App extends Component {
     this.props.dispatch(userLogin(username, password, this.props.list));
   }
 
-  userAdd(user) {
-    this.props.dispatch(userAdd(user));
-  }
-
   userUpdate(id, fullname, age) {
     this.props.dispatch(userUpdate(id, fullname, age));
   }
@@ -58,9 +54,7 @@ class App extends Component {
         <div className='container'>
           <Header activeUser={this.props.loginInfo.activeUser}/>
           <Route exact path='/' component={Home} />
-          <Route path='/signup' component={() => {
-            return <SignUp userAdd={this.userAdd.bind(this)} />
-          }}/>
+          <Route path='/signup' component={SignUp} />
           <Route path='/login' component={() => {
             return <Login userLogin={this.userLogin.bind(this)} />
           }}/>

@@ -8,7 +8,7 @@ import { loadState, saveState } from './localStorage';
 const persistedState = loadState();
 
 // Create Store with data
-const store = createStore(reducer, {});
+const store = createStore(reducer, persistedState);
 
 // Listen for any changes to the state and update localStorage
 store.subscribe(() => {
