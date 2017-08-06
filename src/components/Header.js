@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+// Actions
+import { userLogout } from './../actions/userActions';
+
+function mapStateToProps(store) {
+  return {
+    activeUser: store.users.activeUser
+  }
+}
 
 class Header extends Component {
 
   render() {
-    
+
     return (
       <div className='row'>
         <div className="col-md-6">
@@ -16,7 +26,10 @@ class Header extends Component {
         <div className="col-md-6">
           {
             this.props.activeUser.loggedIn ? (
-              <h5>Logged in as: {this.props.activeUser.user.username}</h5>
+              <div>
+                <h5>Logged in as: {this.props.activeUser.user.username}</h5>
+                <button className='btn btn-default' onClick={() => this.props.dispatch(userLogout())}>Log Out</button>
+              </div>
             ) : (
               <h5>Not Logged In</h5>
             )
@@ -31,4 +44,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default connect(mapStateToProps)(Header);

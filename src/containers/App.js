@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 // Actions
-import { userDelete, userUpdate, userLogin, userLogout } from './../actions/userActions';
+import { userDelete, userUpdate, userLogin } from './../actions/userActions';
 
 // Components
 import Home from './../containers/Home';
@@ -39,7 +39,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className='container'>
-          <Header activeUser={this.props.activeUser}/>
+          <Header />
           <Route exact path='/' component={Home} />
           <Route path='/signup' component={SignUp} />
           <Route path='/login' component={Login}/>

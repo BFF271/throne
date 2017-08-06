@@ -37,6 +37,16 @@ export default function reducer(
           }
         }
       }
+      case 'LOG_OUT': {
+        const noUser = {};
+        return {
+          ...state,
+          activeUser: {
+            loggedIn: false,
+            user: noUser
+          }
+        }
+      }
       case 'USER_ADD': {
         // Set new user id as +1 of the highest id (Would be done by DB)
         const highestIndex = Math.max.apply(Math, state.list.map((user) => {
