@@ -22,9 +22,14 @@ export function userAdd(user) {
 }
 
 export function userDelete(user) {
-  return {
-    type: 'USER_DELETE',
-    payload: user
+  return function(dispatch) {
+    dispatch({
+      type: 'USER_DELETE',
+      payload: user
+    });
+    dispatch({
+      type: 'LOG_OUT'
+    });
   }
 }
 

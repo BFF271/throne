@@ -7,7 +7,8 @@ export default function reducer(
     list: [
       { id: 1, username: 'steveaustin', password: 'password', fullname: 'Steve Austin', age: 34 },
       { id: 2, username: 'hulkhogan', password: 'password', fullname: 'Hulk Hogan', age: 60 },
-      { id: 3, username: 'brethart', password: 'password', fullname: 'Bret Hart', age: 50 }
+      { id: 3, username: 'brethart', password: 'password', fullname: 'Bret Hart', age: 50 },
+      { id: 4, username: 'a', password: 'a', fullname: 'Mr A', age: 100 },
     ]
   }, action) {
     switch(action.type) {
@@ -39,6 +40,7 @@ export default function reducer(
       }
 
       case 'LOG_OUT': {
+        console.log('Logging Out');
         const noUser = {};
         return {
           ...state,

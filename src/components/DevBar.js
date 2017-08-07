@@ -2,10 +2,7 @@
 import React, { Component } from 'react';
 
 class DevBar extends Component {
-  constructor() {
-    super();
-  }
-
+  
   clearStorage() {
     localStorage.removeItem('socialReduxState');
   }

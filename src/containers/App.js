@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 // Actions
-import { userDelete, userUpdate, userLogin } from './../actions/userActions';
+import { userDelete, userUpdate } from './../actions/userActions';
 
 // Components
 import Home from './../containers/Home';
@@ -54,11 +54,7 @@ class App extends Component {
           }}/>
 
           { /* Pass in the react-router-dom props via props. Gives access to .match so I can search user id --- TODO - The other routes should use this method also.*/}
-          <Route path='/profile/:id' render={(props) => {
-            return (
-              <Profile list={this.props.list} {...props} />
-            )
-          }}/>
+          <Route path='/profile/:id' component={Profile} />
           <DevBar props={this.props}/>
         </div>
       </BrowserRouter>
