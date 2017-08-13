@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 function mapStateToProps(store) {
   return {
+    list: store.users.list,
     loggedIn: store.users.activeUser.loggedIn
   }
 }
@@ -29,7 +30,7 @@ class Login extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.dispatch(userLogin(this.state.username, this.state.password));
+    this.props.dispatch(userLogin(this.state.username, this.state.password, this.props.list));
 
     // Reset the inputs
     this.setState({

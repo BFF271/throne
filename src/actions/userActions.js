@@ -1,9 +1,10 @@
-export function userLogin(username, password) {
+export function userLogin(username, password, list) {
   return {
     type: 'LOG_IN',
     payload: {
       username,
-      password
+      password,
+      list
     }
   }
 }
@@ -44,10 +45,16 @@ export function userUpdate(id, fullname, age) {
   }
 }
 
-export function addFriend(userIdToAdd) {
+export function sendFriendRequest(userIdToSendReq) {
   return {
-    type: 'ADD_FRIEND',
-    payload: userIdToAdd
+    type: 'SEND_FRIEND_REQUEST',
+    payload: userIdToSendReq
+  }
+}
+
+export function acceptFriendRequest() {
+  return {
+    type: 'ACCEPT_FRIEND_REQUEST'
   }
 }
 

@@ -11,7 +11,7 @@ export default function reducer(
         password: 'password',
         fullname: 'Steve Austin',
         age: 34,
-        friends: [2,3],
+        friends: [],
         friendreq: []
       },
       {
@@ -20,7 +20,7 @@ export default function reducer(
         password: 'password',
         fullname: 'Hulk Hogan',
         age: 60,
-        friends: [1],
+        friends: [3],
         friendreq: []
       },
       {
@@ -29,7 +29,7 @@ export default function reducer(
         password: 'password',
         fullname: 'The Rock',
         age: 50,
-        friends: [2,1,4],
+        friends: [2],
         friendreq: []
       },
       {
@@ -38,7 +38,7 @@ export default function reducer(
         password: 'a',
         fullname: 'Mr A',
         age: 100,
-        friends: [1,4],
+        friends: [],
         friendreq: []
       },
     ]
@@ -49,7 +49,7 @@ export default function reducer(
         const activeUser = state.list.find((user) => {
           return ((user.username === action.payload.username) && (user.password === action.payload.password));
         })
-
+        console.log(action.payload.list);
         if(activeUser === undefined) {
           // If user log in failed return -1 (-1 means noone logged in)
           return {
@@ -129,9 +129,54 @@ export default function reducer(
       }
 
       // Add Friend
-      case 'ADD_FRIEND': {
-        console.log('Add Friend');
-        console.log(state.activeUser.userId);
+      case 'SEND_FRIEND_REQUEST': {
+        // Create new list to be modified
+        let newList = [...state.list];
+
+        // Get the user that is being SENT the friend request
+        const userToSendReq = newList.find((user) => {
+          return user.id === action.payload;
+        })
+
+
+
+        // Go through the users friend requests, to see if it has already been sent or not.
+        function checkIfReqExists(request) {
+          return request === state.activeUser.userId;
+        }
+
+        function checkIfAlreadyFriend(request) {
+          return request === state.activeUser.userId;
+        }
+
+        // If user to send request to isn't the user logged in
+        if(userToSendReq.id !== state.activeUser.userId) {
+          // Check to see if friend request is still pending or not
+          if(!userToSendReq.friendreq.some(checkIfReqExists)) {
+            // Then check to see if they are friends already.
+            if(!userToSendReq.friends.some(checkIfAlreadyFriend)) {
+              userToSendReq.friendreq = userToSendReq.friendreq.concat(state.activeUser.userId);
+              console.log('Sending friend Request');
+            }
+            else {
+              console.log('Already friends')
+            }
+          }
+          else {
+            console.log('friend req already sent');
+          }
+        }
+        else {
+          console.log('Cant Add Yourself as a friend');
+        }
+
+        return {
+          ...state,
+          list: newList
+        }
+
+
+        console.log(userToSendReq);
         console.log(action.payload);
       }
     }

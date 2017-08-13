@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 // Actions
-import { addFriend } from './../actions/userActions';
+import { sendFriendRequest } from './../actions/userActions';
 
 
 import EditUser from './EditUser';
@@ -36,7 +36,7 @@ class ListItem extends Component{
 
             {// Must be logged in to add friend
               this.props.loggedIn &&
-              <button className="btn btn-success u-inline-block" onClick={() => this.props.dispatch(addFriend(this.props.user.id))}>
+              <button className="btn btn-success u-inline-block" onClick={() => this.props.dispatch(sendFriendRequest(this.props.user.id))}>
                 Add Friend
               </button>
             }
