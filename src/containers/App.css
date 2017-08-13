@@ -25,3 +25,18 @@ label {
 .u-display--block {
   display: block;
 }
+
+
+
+/* Test Styles */
+
+.profile-friend {
+  width: 120px;
+  height: 120px;
+  padding: 10px;
+  text-align: center;
+  display: inline-block;
+  background-color: #ddd;
+  margin: 15px;
+  color: #2c2c2c;
+}

@@ -1,8 +1,20 @@
-// Dumb Component
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+// Actions
+import { addFriend } from './../actions/userActions';
+
 
 import EditUser from './EditUser';
+
+function mapStateToProps(store) {
+  return {
+    loggedIn: store.users.activeUser.loggedIn,
+    list: store.users.list
+  }
+}
+
 
 class ListItem extends Component{
 
@@ -21,19 +33,23 @@ class ListItem extends Component{
                 View User
               </button>
             </Link>
-            {/* <button className="btn btn-danger u-inline-block" onClick={() => this.props.userDelete(this.props.user)}>
-              Delete User
-            </button> */}
+
+            {// Must be logged in to add friend
+              this.props.loggedIn &&
+              <button className="btn btn-success u-inline-block" onClick={() => this.props.dispatch(addFriend(this.props.user.id))}>
+                Add Friend
+              </button>
+            }
           </div>
         </div>
 
         <div>
           {/* Move this to users page / create an edit user page  */}
-          <EditUser user={this.props.user} userUpdate={this.props.userUpdate} />
+          {/* <EditUser user={this.props.user} userUpdate={this.props.userUpdate} /> */}
+          <hr />
         </div>
       </div>
     )
   }
 }
-
-export default ListItem;
+export default connect(mapStateToProps)(ListItem);

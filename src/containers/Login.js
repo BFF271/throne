@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 function mapStateToProps(store) {
   return {
-    activeUser: store.users.activeUser
+    loggedIn: store.users.activeUser.loggedIn
   }
 }
 
@@ -43,7 +43,7 @@ class Login extends Component {
     return (
       <div>
         {
-          this.props.activeUser.loggedIn ? (
+          this.props.loggedIn ? (
             <h3>Already Logged In</h3>
           ) : (
             <div>

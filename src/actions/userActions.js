@@ -43,3 +43,18 @@ export function userUpdate(id, fullname, age) {
     }
   }
 }
+
+export function addFriend(userIdToAdd) {
+  return {
+    type: 'ADD_FRIEND',
+    payload: userIdToAdd
+  }
+}
+
+// Friends - Pass in the user profile we want to find friends for.
+// export function getFriends(userProfile) {
+//   return {
+//     type: 'GET_FRIENDS',
+//     payload: userProfile
+//   }
+// }

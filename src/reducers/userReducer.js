@@ -2,7 +2,7 @@ export default function reducer(
   state = {
     activeUser: {
       loggedIn: false,
-      user: {}
+      userId: undefined
     },
     list: [
       {
@@ -11,7 +11,8 @@ export default function reducer(
         password: 'password',
         fullname: 'Steve Austin',
         age: 34,
-        friends: [2,3]
+        friends: [2,3],
+        friendreq: []
       },
       {
         id: 2,
@@ -19,7 +20,8 @@ export default function reducer(
         password: 'password',
         fullname: 'Hulk Hogan',
         age: 60,
-        friends: [1]
+        friends: [1],
+        friendreq: []
       },
       {
         id: 3,
@@ -27,7 +29,8 @@ export default function reducer(
         password: 'password',
         fullname: 'The Rock',
         age: 50,
-        friends: [2,1,4]
+        friends: [2,1,4],
+        friendreq: []
       },
       {
         id: 4,
@@ -35,7 +38,8 @@ export default function reducer(
         password: 'a',
         fullname: 'Mr A',
         age: 100,
-        friends: [1,4]
+        friends: [1,4],
+        friendreq: []
       },
     ]
   }, action) {
@@ -52,7 +56,7 @@ export default function reducer(
             ...state,
             activeUser: {
               loggedIn: false,
-              user: {}
+              userId: undefined
             }
           };
         }
@@ -61,7 +65,7 @@ export default function reducer(
             ...state,
             activeUser: {
               loggedIn: true,
-              user: activeUser
+              userId: activeUser.id
             }
           }
         }
@@ -69,12 +73,11 @@ export default function reducer(
 
       case 'LOG_OUT': {
         console.log('Logging Out');
-        const noUser = {};
         return {
           ...state,
           activeUser: {
             loggedIn: false,
-            user: noUser
+            userId: undefined
           }
         }
       }
@@ -123,6 +126,13 @@ export default function reducer(
           ...state,
           list: newList
         }
+      }
+
+      // Add Friend
+      case 'ADD_FRIEND': {
+        console.log('Add Friend');
+        console.log(state.activeUser.userId);
+        console.log(action.payload);
       }
     }
   return state;

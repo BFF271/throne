@@ -27,7 +27,7 @@ class Header extends Component {
           {
             this.props.activeUser.loggedIn ? (
               <div>
-                <h5>Logged in as: {this.props.activeUser.user.username}</h5>
+                <h5>Logged in as: ACTIVEUSER FIND USER WITH ID</h5>
                 <button className='btn btn-default' onClick={() => this.props.dispatch(userLogout())}>Log Out</button>
               </div>
             ) : (

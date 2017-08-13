@@ -1,34 +1,52 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+function mapStateToProps(store) {
+  return {
+    list: store.users.list
+  }
+}
 
 class Friends extends Component {
 
-  render() {
-    // Get the users friends by id and put them into userFriends as whole objects so can use friend data eg profile image etc
+  constructor() {
+    super();
+    this.logstuff = this.logstuff.bind(this);
+  }
 
+  logstuff() {
+    console.log(this.props);
+  }
+
+  render() {
+
+    // Get the users friends by id and put them into userFriends as whole objects so can use friend data eg profile image etc
     let userFriends = [];
 
-    for(var i =0; i < this.props.user.friends.length; i++) {
-      for(var j=0; j < this.props.list.length; j++) {
-        if(this.props.user.friends[i] === this.props.list[j].id) {
+    for(let i = 0; i < this.props.userProfile.friends.length; i++) {
+      for(let j= 0; j < this.props.list.length; j++) {
+        if(this.props.userProfile.friends[i] === this.props.list[j].id) {
           userFriends.push(this.props.list[j]);
         }
       }
     }
 
-
     const friends = userFriends.map((user) => {
       return (
-        <h4 key={user.id}>{user.username}</h4>
+        <div className='profile-friend' key={user.id}>
+          {user.username}
+        </div>
       )
     });
 
     return (
       <div>
-        <h1>Friends List</h1>
+        <h1 onClick={this.logstuff}>Friends List</h1>
+
         {friends}
       </div>
     )
   }
 }
 
-export default Friends;
+export default connect(mapStateToProps)(Friends);

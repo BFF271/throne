@@ -11,7 +11,6 @@ class List extends Component {
           key={user.id}
           user={user}
           userUpdate={this.props.userUpdate}
-          userDelete={this.props.userDelete}
         />
       )
     });
@@ -27,5 +26,7 @@ class List extends Component {
     )
   }
 }
+
+
 
 export default List;
