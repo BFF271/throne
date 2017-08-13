@@ -21,13 +21,14 @@ class ListItem extends Component{
                 View User
               </button>
             </Link>
-            <button className="btn btn-danger u-inline-block" onClick={() => this.props.userDelete(this.props.user)}>
+            {/* <button className="btn btn-danger u-inline-block" onClick={() => this.props.userDelete(this.props.user)}>
               Delete User
-            </button>
+            </button> */}
           </div>
         </div>
 
         <div>
+          {/* Move this to users page / create an edit user page  */}
           <EditUser user={this.props.user} userUpdate={this.props.userUpdate} />
         </div>
       </div>

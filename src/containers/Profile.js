@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+// Components
+import Friends from './../components/Friends';
+
 // Actions
 import { userDelete } from './../actions/userActions';
 
@@ -41,11 +44,18 @@ class Profile extends Component {
                 </div>
                 <div className="col-md-6">
                   {activeUserProfile &&
-                    <button
-                      className="btn btn-danger u-inline-block"
-                      onClick={() => this.props.dispatch(userDelete(this.props.activeUser.user))}>
-                      Delete User
-                    </button>
+                    <div>
+                      <button
+                        className="btn btn-danger u-inline-block"
+                        onClick={() => this.props.dispatch(userDelete(this.props.activeUser.user))}>
+                        Delete User
+                      </button>
+                      <button
+                        className="btn btn-danger u-inline-block"
+                        onClick={() => this.props.dispatch(userDelete(this.props.activeUser.user))}>
+                        Edit User
+                      </button>
+                    </div>
                   }
                 </div>
                 <div className="col-md-12">
@@ -59,7 +69,11 @@ class Profile extends Component {
                   <h4>Age: {user.age}</h4>
                   <h4>Country: userCountry</h4>
                   <hr />
-                  <h1>FRIENDS</h1>
+                  <Friends
+                    user={user}
+                    activeUserProfile={activeUserProfile}
+                    list={this.props.list}
+                  />
                 </div>
               </div>
               <hr/>
