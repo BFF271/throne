@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 // Actions
-import { userLogout } from './../actions/userActions';
+import { userLogout } from './../actions/loginActions';
 
 function mapStateToProps(store) {
   return {
-    activeUser: store.users.activeUser
+    loggedIn: store.activeUser.loggedIn
   }
 }
 
@@ -25,7 +25,7 @@ class Header extends Component {
         </div>
         <div className="col-md-6">
           {
-            this.props.activeUser.loggedIn ? (
+            this.props.loggedIn ? (
               <div>
                 <h5>Logged in as: ACTIVEUSER FIND USER WITH ID</h5>
                 <button className='btn btn-default' onClick={() => this.props.dispatch(userLogout())}>Log Out</button>

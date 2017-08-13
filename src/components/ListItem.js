@@ -10,7 +10,7 @@ import EditUser from './EditUser';
 
 function mapStateToProps(store) {
   return {
-    loggedIn: store.users.activeUser.loggedIn,
+    loggedIn: store.activeUser.loggedIn,
     list: store.users.list
   }
 }

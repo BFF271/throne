@@ -19,7 +19,7 @@ import './App.css';
 
 function mapStateToProps(store) {
   return {
-    activeUser: store.users.activeUser,
+    activeUser: store.activeUser,
     list: store.users.list
   }
 }

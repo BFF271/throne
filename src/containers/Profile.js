@@ -7,10 +7,13 @@ import Friends from './../components/Friends';
 // Actions
 import { userDelete } from './../actions/userActions';
 
+// function
+import { getUser } from './../functions/getUsers';
+
 function mapStateToProps(store) {
   return {
     list: store.users.list,
-    activeUser: store.users.activeUser
+    activeUser: store.activeUser
   }
 }
 
@@ -19,9 +22,7 @@ class Profile extends Component {
 
   render() {
     // Is there a user with this id stored?
-    const userProfile = this.props.list.find((user) => {
-      return user.id === Number(this.props.match.params.id);
-    });
+    const userProfile = getUser(this.props.list, this.props.match.params.id);
 
     const userExists = userProfile !== undefined;
     let activeUserProfile = false;

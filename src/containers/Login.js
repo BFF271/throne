@@ -1,12 +1,12 @@
 // Dumb Component
 import React, { Component } from 'react';
-import { userLogin } from './../actions/userActions';
+import { userLogin } from './../actions/loginActions';
 import { connect } from 'react-redux';
 
 function mapStateToProps(store) {
   return {
     list: store.users.list,
-    loggedIn: store.users.activeUser.loggedIn
+    loggedIn: store.activeUser.loggedIn
   }
 }
 
