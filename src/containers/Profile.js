@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 // Components
 import Friends from './../components/Friends';
+import Comments from './../components/Comments';
 
 // Actions
 import { userDelete } from './../actions/userActions';
@@ -79,7 +80,9 @@ class Profile extends Component {
               <hr/>
               <div className="row">
                 <div className="col-md-12">
-                  <h1>COMMENT WALL</h1>
+                  <Comments
+                    userProfile={userProfile}
+                  />
                 </div>
               </div>
             </div>
