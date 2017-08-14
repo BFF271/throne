@@ -16,7 +16,7 @@ export default function reducer(
         password: 'password',
         fullname: 'Hulk Hogan',
         age: 60,
-        friends: [3],
+        friends: [],
         friendreq: []
       },
       {
@@ -25,7 +25,7 @@ export default function reducer(
         password: 'password',
         fullname: 'The Rock',
         age: 50,
-        friends: [2],
+        friends: [],
         friendreq: []
       },
       {
@@ -139,8 +139,9 @@ export default function reducer(
 
 
       // Handle friend request
+      // TODO - Refactor this
       case 'HANDLE_FRIEND_REQUEST': {
-        console.log(action.payload);
+
         // Create new list to be modified
         let newList = [...state.list];
 
@@ -149,14 +150,31 @@ export default function reducer(
           return user.id === action.payload.userAccepting;
         })
 
+        // Get the user that sent the friend request
+        const userSent = newList.find((user) => {
+          return user.id === action.payload.userToAccept;
+        })
+
         // If Rejected don't add to friends list
+        // Otherwise add friend to both users
         if(action.payload.isAccepted) {
           userAccepting.friends = userAccepting.friends.concat(action.payload.userToAccept);
+
+          userSent.friends = userSent.friends.concat(action.payload.userAccepting);
         }
 
-        // Remove the friend from friendreq
-        const index = userAccepting.friendreq.indexOf(action.payload.userToAccept);
-        userAccepting.friendreq.splice(index, 1);
+        // Remove the friend from friendreq on both users
+        const indexAccept = userAccepting.friendreq.indexOf(action.payload.userToAccept);
+
+        if(indexAccept != -1) {
+          userAccepting.friendreq.splice(indexAccept, 1);
+        }
+
+        const indexSent = userSent.friendreq.indexOf(action.payload.userAccepting);
+
+        if(indexSent != -1) {
+          userSent.friendreq.splice(indexSent, 1);
+        }
 
         console.log(userAccepting);
         return {
