@@ -170,13 +170,13 @@ export default function reducer(
         // Remove the friend from friendreq on both users
         const indexAccept = userAccepting.friendreq.indexOf(action.payload.userToAccept);
 
-        if(indexAccept != -1) {
+        if(indexAccept !== -1) {
           userAccepting.friendreq.splice(indexAccept, 1);
         }
 
         const indexSent = userSent.friendreq.indexOf(action.payload.userAccepting);
 
-        if(indexSent != -1) {
+        if(indexSent !== -1) {
           userSent.friendreq.splice(indexSent, 1);
         }
 
@@ -192,8 +192,29 @@ export default function reducer(
 
         // Create new list to be modified
         let newList = [...state.list];
-        
-        console.log(userAccepting);
+
+        // Get the user1 obj - user being deleted
+        const user1 = newList.find((user) => {
+          return user.id === action.payload.user1;
+        })
+
+        // Get the user2 obj - user profile
+        const user2 = newList.find((user) => {
+          return user.id === action.payload.user2;
+        })
+
+        // get position of user in to delete in friends array and remove it
+        const index1 = user1.friends.indexOf(action.payload.user2);
+        if(index1 !== -1) {
+          user1.friends.splice(index1, 1);
+        }
+
+        const index2 = user2.friends.indexOf(action.payload.user1);
+        if(index2 !== -1) {
+          user2.friends.splice(index2, 1);
+        }
+
+        console.log(action.payload);
         return {
           ...state,
           list: newList

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+// Actions
+import { removeFriend } from './../actions/userActions';
+
 function mapStateToProps(store) {
   return {
     list: store.users.list
@@ -33,8 +36,11 @@ class Friends extends Component {
 
     const friends = userFriends.map((user) => {
       return (
-        <div className='profile-friend' key={user.id}>
-          {user.username}
+        <div key={user.id}>
+          <div className='profile-friend'>
+            {user.username}
+            <button onClick={() => this.props.dispatch(removeFriend(user.id, this.props.userProfile.id))} className='btn btn-danger profile-friend--delete'>Delete Friend</button>
+          </div>
         </div>
       )
     });

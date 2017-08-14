@@ -49,12 +49,12 @@ export function handleFriendRequest(userToAccept, userAccepting, isAccepted) {
   }
 }
 
-export function removeFriend(friendToRemove, userRemoving) {
+export function removeFriend(user1, user2) {
   return {
     type: 'REMOVE_FRIEND',
     payload: {
-      friendToRemove,
-      userRemoving,
+      user1,
+      user2,
     }
   }
 }
