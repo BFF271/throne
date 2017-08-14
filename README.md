@@ -1,10 +1,8 @@
-## Welcome To The User App By Matt P
-
-* * *
-
 #### This is a social media app, the features I have / will be adding are...
 
 * * *
+
+##### To use the app download and run npm start. The app uses local storage, the clear storage button will only clear storage from this app, Styling and UI will be looked at last, this is more about practising application structure with Redux. please check userReducer for default usernames and passwords.
 
 *   View a list of current users in the system, with the ability to search for them
 *   From the list you can view their profile

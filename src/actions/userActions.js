@@ -48,3 +48,13 @@ export function handleFriendRequest(userToAccept, userAccepting, isAccepted) {
     }
   }
 }
+
+export function removeFriend(friendToRemove, userRemoving) {
+  return {
+    type: 'REMOVE_FRIEND',
+    payload: {
+      friendToRemove,
+      userRemoving,
+    }
+  }
+}

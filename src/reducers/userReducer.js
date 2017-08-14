@@ -1,3 +1,7 @@
+// Potentially worth breaking user list up.
+// Hard to split up as the friend arrays / comment arrays are within the user list.
+// Would it be better to have friends / comments as seperate states?
+
 export default function reducer(
   state = {
     list: [
@@ -182,6 +186,20 @@ export default function reducer(
           list: newList
         }
       }
+
+      // Remove friend
+      case 'REMOVE_FRIEND': {
+
+        // Create new list to be modified
+        let newList = [...state.list];
+        
+        console.log(userAccepting);
+        return {
+          ...state,
+          list: newList
+        }
+      }
+
     }
   return state;
 }
