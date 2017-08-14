@@ -42,6 +42,13 @@ class Header extends Component {
           <h5 className='u-inline-block mr-2'><Link to='/signup'>Sign Up</Link></h5>
           <h5 className='u-inline-block mr-2'><Link to='/login'>Log In</Link></h5>
           <h5 className='u-inline-block mr-2'><Link to='/list'>List</Link></h5>
+          { this.props.activeUser.userId &&
+            <Link to={`/profile/${this.props.activeUser.userId}`}>
+              <h5 className="u-inline-block mr-2">
+                View Your Profile
+              </h5>
+            </Link>
+          }
         </div>
         <div className="col-md-3">
           <h5>Friend Requests:</h5>

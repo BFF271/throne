@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 // Actions
 import { removeFriend } from './../actions/userActions';
@@ -36,11 +37,13 @@ class Friends extends Component {
 
     const friends = userFriends.map((user) => {
       return (
-        <div key={user.id}>
-          <div className='profile-friend'>
-            {user.username}
-            <button onClick={() => this.props.dispatch(removeFriend(user.id, this.props.userProfile.id))} className='btn btn-danger profile-friend--delete'>Delete Friend</button>
-          </div>
+        <div key={user.id} className='profile-friend'>
+          <Link to={`/profile/${user.id}`}>
+            <h5 className="u-inline-block mr-2">
+              {user.username}
+            </h5>
+          </Link>
+          <button onClick={() => this.props.dispatch(removeFriend(user.id, this.props.userProfile.id))} className='btn btn-danger profile-friend--delete'>Delete Friend</button>
         </div>
       )
     });

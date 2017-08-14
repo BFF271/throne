@@ -47,14 +47,14 @@ class Profile extends Component {
                   {activeUserProfile &&
                     <div>
                       <button
-                        className="btn btn-danger u-inline-block"
+                        className="btn btn-danger u-inline-block mr-2"
                         onClick={() => this.props.dispatch(userDelete(this.props.activeUser.user))}>
-                        Delete User
+                        Delete Your Profile
                       </button>
                       <button
-                        className="btn btn-danger u-inline-block"
+                        className="btn btn-default u-inline-block"
                         onClick={() => this.props.dispatch(userDelete(this.props.activeUser.user))}>
-                        Edit User
+                        Edit Profile
                       </button>
                     </div>
                   }
