@@ -10,7 +10,7 @@ import EditUser from './EditUser';
 
 function mapStateToProps(store) {
   return {
-    loggedIn: store.activeUser.loggedIn,
+    activeUser: store.activeUser,
     list: store.users.list
   }
 }
@@ -35,8 +35,8 @@ class ListItem extends Component{
             </Link>
 
             {// Must be logged in to add friend
-              this.props.loggedIn &&
-              <button className="btn btn-success u-inline-block" onClick={() => this.props.dispatch(sendFriendRequest(this.props.user.id))}>
+              this.props.activeUser.loggedIn &&
+              <button className="btn btn-success u-inline-block" onClick={() => this.props.dispatch(sendFriendRequest(this.props.user.id, this.props.activeUser.userId))}>
                 Add Friend
               </button>
             }

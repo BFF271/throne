@@ -35,7 +35,7 @@ export default function reducer(
         fullname: 'Mr A',
         age: 100,
         friends: [],
-        friendreq: []
+        friendreq: [1,2,3]
       },
     ]
   }, action) {
@@ -93,27 +93,26 @@ export default function reducer(
 
         // Get the user that is being SENT the friend request
         const userToSendReq = newList.find((user) => {
-          return user.id === action.payload;
+          return user.id === action.payload.userIdToSendReq;
         })
-
 
 
         // Go through the users friend requests, to see if it has already been sent or not.
         function checkIfReqExists(request) {
-          return request === state.activeUser.userId;
+          return request === action.payload.activeUserId;
         }
 
         function checkIfAlreadyFriend(request) {
-          return request === state.activeUser.userId;
+          return request === action.payload.activeUserId;
         }
 
         // If user to send request to isn't the user logged in
-        if(userToSendReq.id !== state.activeUser.userId) {
+        if(userToSendReq.id !== action.payload.activeUserId) {
           // Check to see if friend request is still pending or not
           if(!userToSendReq.friendreq.some(checkIfReqExists)) {
             // Then check to see if they are friends already.
             if(!userToSendReq.friends.some(checkIfAlreadyFriend)) {
-              userToSendReq.friendreq = userToSendReq.friendreq.concat(state.activeUser.userId);
+              userToSendReq.friendreq = userToSendReq.friendreq.concat(action.payload.activeUserId);
               console.log('Sending friend Request');
             }
             else {
@@ -136,6 +135,34 @@ export default function reducer(
 
         console.log(userToSendReq);
         console.log(action.payload);
+      }
+
+
+      // Handle friend request
+      case 'HANDLE_FRIEND_REQUEST': {
+        console.log(action.payload);
+        // Create new list to be modified
+        let newList = [...state.list];
+
+        // Get the user that is accepting the friend request
+        const userAccepting = newList.find((user) => {
+          return user.id === action.payload.userAccepting;
+        })
+
+        // If Rejected don't add to friends list
+        if(action.payload.isAccepted) {
+          userAccepting.friends = userAccepting.friends.concat(action.payload.userToAccept);
+        }
+
+        // Remove the friend from friendreq
+        const index = userAccepting.friendreq.indexOf(action.payload.userToAccept);
+        userAccepting.friendreq.splice(index, 1);
+
+        console.log(userAccepting);
+        return {
+          ...state,
+          list: newList
+        }
       }
     }
   return state;

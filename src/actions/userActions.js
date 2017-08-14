@@ -28,23 +28,23 @@ export function userUpdate(id, fullname, age) {
   }
 }
 
-export function sendFriendRequest(userIdToSendReq) {
+export function sendFriendRequest(userIdToSendReq, activeUserId) {
   return {
     type: 'SEND_FRIEND_REQUEST',
-    payload: userIdToSendReq
+    payload: {
+      userIdToSendReq,
+      activeUserId
+    }
   }
 }
 
-export function acceptFriendRequest() {
+export function handleFriendRequest(userToAccept, userAccepting, isAccepted) {
   return {
-    type: 'ACCEPT_FRIEND_REQUEST'
+    type: 'HANDLE_FRIEND_REQUEST',
+    payload: {
+      userToAccept,
+      userAccepting,
+      isAccepted
+    }
   }
 }
-
-// Friends - Pass in the user profile we want to find friends for.
-// export function getFriends(userProfile) {
-//   return {
-//     type: 'GET_FRIENDS',
-//     payload: userProfile
-//   }
-// }
