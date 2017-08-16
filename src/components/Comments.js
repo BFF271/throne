@@ -30,7 +30,8 @@ class Comments extends Component {
     if(userComments !== undefined) {
       comments = userComments.posts.map((post) => {
         return (
-          <div className='row' key={post.post}>
+          // add unique key for posts
+          <div key={post.id} className='row'>
             <div className='col-md-6'>
               {post.post}
             </div>
@@ -67,7 +68,7 @@ class Comments extends Component {
       addCommentBtn = <h4>You need to be friends to add a comment</h4>;
     }
     else {
-      addCommentBtn = <button onClick={() => this.props.dispatch(addComment(this.props.userProfile, this.props.activeUser, this.props.list))} className="btn btn-default u-inline-block mr-2">Add Comment</button>
+      addCommentBtn = <button onClick={() => this.props.dispatch(addComment(this.props.userProfile.id, this.props.activeUser.userId, this.props.list))} className="btn btn-default u-inline-block mr-2">Add Comment</button>
     }
 
 
