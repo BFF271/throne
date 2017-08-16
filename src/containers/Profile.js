@@ -18,7 +18,7 @@ function mapStateToProps(store) {
   }
 }
 
-
+// TODO - you can currently delete friends from other peoples profiles, do a check for this!!!
 class Profile extends Component {
 
   render() {
@@ -49,7 +49,7 @@ class Profile extends Component {
                     <div>
                       <button
                         className="btn btn-danger u-inline-block mr-2"
-                        onClick={() => this.props.dispatch(userDelete(this.props.activeUser.user))}>
+                        onClick={() => this.props.dispatch(userDelete(this.props.activeUser.userId))}>
                         Delete Your Profile
                       </button>
                       <button

@@ -1,26 +1,51 @@
 export default function reducer(
-  state = {
-    comments: [
+  state = [
       {
         user: 4,
-        posts: ['User 4 First Comment', 'User 4 Second Comment']
+        posts: [
+          {
+            poster: 3,
+            post: 'User 4 First Comment from user 3'
+          },
+          {
+            poster: 4,
+            post: 'User 4 First Comment from user 4'
+          }
+        ]
       },
       {
         user: 1,
-        posts: ['User 1 First Comment', 'User 1 Second Comment']
+        posts: [
+          {
+            poster: 3,
+            post: 'User 1 First Comment by user 3'
+          }
+        ]
       },
       {
         user: 2,
-        posts: ['User 2 First Comment', 'User 2 Second Comment']
+        posts: [
+          {
+            poster: 3,
+            post: 'User 2 First Comment by user 3'
+          },
+          {
+            poster: 3,
+            post: 'User 2 Second Comment by user 3'
+          },
+          {
+            poster: 4,
+            post: 'User 2 Third Comment by user 4'
+          }
+        ]
       }
-    ]
-  }, action) {
+  ], action) {
     switch(action.type) {
       case 'ADD_COMMENT': {
         console.log(action.payload);
-        return {
-
-        }
+        // return {
+        //
+        // }
       }
     }
   return state;

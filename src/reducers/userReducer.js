@@ -11,7 +11,7 @@ export default function reducer(
         password: 'password',
         fullname: 'Steve Austin',
         age: 34,
-        friends: [],
+        friends: [2,3],
         friendreq: []
       },
       {
@@ -64,13 +64,9 @@ export default function reducer(
 
       // Create a new array from list, that doesn't include the user to delete
       case 'USER_DELETE': {
-        // When you delete your account, you also need to be logged out as that user no longer exists
-        console.log('Deleting');
-        console.log(action.payload);
         return {
-          ...state,
           list: state.list.filter((user) => {
-            return user !== action.payload;
+            return user.id !== action.payload;
           })
         }
       }
@@ -90,6 +86,7 @@ export default function reducer(
         }
       }
 
+      // May want to break up friend and user state
       // Add Friend
       case 'SEND_FRIEND_REQUEST': {
         // Create new list to be modified

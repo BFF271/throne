@@ -28,6 +28,7 @@ export function userUpdate(id, fullname, age) {
   }
 }
 
+// May want to break up friends into seperate state as opposed to keeping friends in users list
 export function sendFriendRequest(userIdToSendReq, activeUserId) {
   return {
     type: 'SEND_FRIEND_REQUEST',
