@@ -39,7 +39,11 @@ class SignUp extends Component {
         username: this.state.username,
         password: this.state.password,
         fullname: this.state.fullname,
-        age: this.state.age
+        age: this.state.age,
+        friends: [],
+        friendreq: [],
+        image: 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png',
+        home: 'Earth'
       }));
 
     // Reset the inputs

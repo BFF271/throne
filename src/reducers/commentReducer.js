@@ -48,22 +48,36 @@ export default function reducer(
   ], action) {
     switch(action.type) {
       case 'ADD_COMMENT': {
-        console.log(action.payload);
-
         // Return the comments of the profile that needs to be amended
         const profile = state.find((user) => {
           return user.user === action.payload.profileId;
         });
 
-        // Copy comments of profile found to avoid mutation
-        let profileCopy = Object.assign({}, profile);
-
-        // Create new id for comment (Would be done via database), and populate data, create new reference so it's not using reference to profile.
-        profileCopy.posts = profile.posts.concat({
-          id: Math.floor((Math.random() * 1000000) + 1),
-          poster: action.payload.posterId,
-          post: 'New Post'
-        })
+        let profileCopy = {};
+        // Create the comment object for that user, if it doesn't exist
+        if(profile === undefined) {
+          profileCopy = {
+            user: action.payload.profileId,
+            posts: []
+          }
+          profileCopy.posts = [];
+          profileCopy.posts = profileCopy.posts.concat ({
+            id: Math.floor((Math.random() * 1000000) + 1),
+            poster: action.payload.posterId,
+            post: 'New Post'
+          })
+        }
+        // If the comment object for the user exists, amend it
+        else {
+          // Copy comments of profile found to avoid mutation
+          profileCopy = Object.assign({}, profile);
+          // Create new id for comment (Would be done via database), and populate data, create new ref so it's not using reference to profile.
+          profileCopy.posts = profile.posts.concat({
+            id: Math.floor((Math.random() * 1000000) + 1),
+            poster: action.payload.posterId,
+            post: 'New Post'
+          })
+        }
 
         // Create new state array, without the comments that need to be amended
         let newState = state.filter((obj) => {
@@ -75,6 +89,10 @@ export default function reducer(
 
         // Return the new state
         return newState;
+      }
+      case 'DELETE_COMMENT': {
+        console.log(action.payload);
+        return state;
       }
     }
   return state;

@@ -7,37 +7,77 @@ export default function reducer(
     list: [
       {
         id: 1,
-        username: 'steveaustin',
+        username: 'nstark',
         password: 'password',
-        fullname: 'Steve Austin',
+        fullname: 'Ned Stark',
         age: 34,
-        friends: [2,3],
-        friendreq: []
+        image: 'http://cdn.movieweb.com/img.news.tops/NE3A7iTEzhuC69_1_b/Game-Of-Thrones-Season-6-Ned-Stark.jpg',
+        friends: [3, 4],
+        friendreq: [],
+        home: 'Winterfell'
       },
       {
         id: 2,
-        username: 'hulkhogan',
+        username: 'thehound',
         password: 'password',
-        fullname: 'Hulk Hogan',
-        age: 60,
-        friends: [],
-        friendreq: []
+        fullname: 'Sandor Clegane',
+        age: 38,
+        image: 'http://i1.dailyrecord.co.uk/incoming/article10305461.ece/ALTERNATES/s615/JS34481475.jpg',
+        friends: [3, 4],
+        friendreq: [],
+        home: "Clegane's Keep"
       },
       {
         id: 3,
-        username: 'therock',
+        username: 'jonsnow',
         password: 'password',
-        fullname: 'The Rock',
-        age: 50,
-        friends: [],
-        friendreq: []
+        fullname: 'Jon Snow',
+        age: 25,
+        image: 'https://www.thesun.co.uk/wp-content/uploads/2017/05/jon-snow-and-the-nights-watch-e1494021230137.jpg?strip=all&w=960',
+        friends: [1,4],
+        friendreq: [],
+        home: 'Winterfell'
       },
       {
         id: 4,
+        username: 'astark',
+        password: 'password',
+        fullname: 'Arya Stark',
+        age: 17,
+        image: 'http://img.wennermedia.com/920-width/rehost2f20162f92f132-14e00cfc-8e11-467f-90b2-cf60f7461f9a.jpg',
+        friends: [1,2,3],
+        friendreq: [],
+        home: 'Winterfell'
+      },
+      {
+        id: 5,
+        username: 'clannister',
+        password: 'password',
+        fullname: 'Cersei Lannister',
+        age: 37,
+        image: 'https://i.pinimg.com/originals/e7/41/66/e74166adb8d99e0002fd0ee805c987c6.jpg',
+        friends: [],
+        friendreq: [],
+        home: "King's Landing"
+      },
+      {
+        id: 6,
+        username: 'littlefinger',
+        password: 'password',
+        fullname: 'Petyr Baelish',
+        age: 40,
+        image: 'https://typeset-beta.imgix.net/2016/5/3/littlefinger-helen-sloan-hbo-f51b470f-8cfa-4b20-9055-e102c7df85de.jpeg?w=800&h=800&auto=format&fm=jpg&q=70&fit=crop&crop=faces',
+        friends: [],
+        friendreq: [],
+        home: 'The Vale'
+      },
+      {
+        id: 7,
         username: 'a',
         password: 'a',
         fullname: 'Mr A',
         age: 100,
+        image: 'https://upload.wikimedia.org/wikipedia/en/5/50/Agentdalecooper.jpg',
         friends: [],
         friendreq: [1,2,3]
       },

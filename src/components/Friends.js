@@ -27,6 +27,8 @@ class Friends extends Component {
     // Get the users friends by id and put them into userFriends as whole objects so can use friend data eg profile image etc
     let userFriends = [];
 
+    console.log(this.props.userProfile.friends);
+
     for(let i = 0; i < this.props.userProfile.friends.length; i++) {
       for(let j= 0; j < this.props.list.length; j++) {
         if(this.props.userProfile.friends[i] === this.props.list[j].id) {
@@ -42,8 +44,13 @@ class Friends extends Component {
             <h5 className="u-inline-block mr-2">
               {user.username}
             </h5>
+
+            <img src={user.image} alt="Profile"/>
           </Link>
-          <button onClick={() => this.props.dispatch(removeFriend(user.id, this.props.userProfile.id))} className='btn btn-danger profile-friend--delete'>Delete Friend</button>
+
+          {this.props.activeUserProfile &&
+            <button onClick={() => this.props.dispatch(removeFriend(user.id, this.props.userProfile.id))} className='btn btn-danger profile-friend--delete'>Delete Friend</button>
+          }
         </div>
       )
     });

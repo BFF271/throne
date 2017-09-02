@@ -30,6 +30,11 @@ label {
 
 /* Test Styles */
 
+.list-img {
+  width: 100px;
+  margin-right: 3rem;
+}
+
 .profile-friend {
   width: 160px;
   height: 160px;
@@ -40,6 +45,12 @@ label {
   margin: 12px;
   color: #2c2c2c;
   position: relative;
+  overflow: hidden;
+}
+
+.profile-friend img {
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .profile-friend--delete {

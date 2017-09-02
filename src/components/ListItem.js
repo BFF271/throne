@@ -6,8 +6,6 @@ import { connect } from 'react-redux';
 import { sendFriendRequest } from './../actions/userActions';
 
 
-import EditUser from './EditUser';
-
 function mapStateToProps(store) {
   return {
     activeUser: store.activeUser,
@@ -23,9 +21,11 @@ class ListItem extends Component{
       <div>
         <div className="row">
           <div className="col-md-6">
+            <img className="list-img" src={this.props.user.image} alt="Profile"/>
             <h4 className="u-inline-block">
-              {this.props.user.username}: {this.props.user.age}
+              {this.props.user.fullname} - ({this.props.user.username})
             </h4>
+
           </div>
           <div className="col-md-6">
             <Link to={`/profile/${this.props.user.id}`}>

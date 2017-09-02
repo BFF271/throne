@@ -64,12 +64,12 @@ class Profile extends Component {
                   <hr />
                 </div>
                 <div className='col-md-6'>
-                  <img className='img-responsive' src='http://loremflickr.com/800/600' alt='Default Profile Img'/>
+                  <img className="img-responsive" src={userProfile.image}  alt="Profile"/>
                 </div>
                 <div className='col-md-6'>
                   <h4>Name: {userProfile.fullname}</h4>
                   <h4>Age: {userProfile.age}</h4>
-                  <h4>Country: userCountry</h4>
+                  <h4>Home: {userProfile.home}</h4>
                   <hr />
                   <Friends
                     userProfile={userProfile}
