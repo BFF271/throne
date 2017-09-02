@@ -20,7 +20,8 @@ import './App.css';
 function mapStateToProps(store) {
   return {
     activeUser: store.activeUser,
-    list: store.users.list
+    list: store.users.list,
+    comments: store.comments
   }
 }
 

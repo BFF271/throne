@@ -48,30 +48,32 @@ export default function reducer(
   ], action) {
     switch(action.type) {
       case 'ADD_COMMENT': {
+        console.log(action.payload);
 
-        // Copy the state fully
-        // let stateCopy = state.map(obj => Object.assign({}, obj));
-
-        // Get profile to add to
+        // Return the comments of the profile that needs to be amended
         const profile = state.find((user) => {
           return user.user === action.payload.profileId;
         });
 
-        // let newPost = {poster: action.payload.posterId, post: 'NEW COOL POST!!!'};
-        // let newProfile = Object.assign({}, profile);
+        // Copy comments of profile found to avoid mutation
+        let profileCopy = Object.assign({}, profile);
 
-        // Give the post a random id for now, this is ok for testing.
-        profile.posts.push({id: Math.floor((Math.random() * 1000000) + 1), poster: action.payload.posterId, post: 'NEW COOL POST!!!'});
+        // Create new id for comment (Would be done via database), and populate data, create new reference so it's not using reference to profile.
+        profileCopy.posts = profile.posts.concat({
+          id: Math.floor((Math.random() * 1000000) + 1),
+          poster: action.payload.posterId,
+          post: 'New Post'
+        })
 
+        // Create new state array, without the comments that need to be amended
+        let newState = state.filter((obj) => {
+          return obj.user !== action.payload.profileId;
+        });
 
-        // profile.posts = newProfile.posts.concat(newPost);
-        console.log('state');
-        console.log(state);
-        // console.log('stateCopy');
-        // console.log(stateCopy);
+        // Add the new comment to the newState
+        newState = newState.concat(profileCopy);
 
-        const newState = state
-
+        // Return the new state
         return newState;
       }
     }

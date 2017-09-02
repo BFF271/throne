@@ -54,15 +54,12 @@ class Comments extends Component {
     }
 
     let addCommentBtn = null;
-    console.log('fefwe');
-    console.log(this.props.activeUser.userId);
-    console.log(this.props.userProfile);
-    console.log('dede');
+    
     if(this.props.activeUser.userId === undefined) {
       addCommentBtn = <h4>Sign in to add a comment</h4>;
     }
     else if(this.props.activeUser.userId === this.props.userProfile.id) {
-      addCommentBtn = <button onClick={() => this.props.dispatch(addComment(this.props.userProfile, this.props.activeUser, this.props.list))} className="btn btn-default u-inline-block mr-2">Add Comment To Own Wall</button>
+      addCommentBtn = <button onClick={() => this.props.dispatch(addComment(this.props.userProfile.id, this.props.activeUser.userId, this.props.list))} className="btn btn-default u-inline-block mr-2">Add Comment To Own Wall</button>
     }
     else if(!areFriends) {
       addCommentBtn = <h4>You need to be friends to add a comment</h4>;
@@ -84,6 +81,7 @@ class Comments extends Component {
         </div>
         <hr />
         { comments.length > 0 ? (
+            //<h1>blah</h1>
             comments
           ) : (
             <h1>No Comments</h1>
