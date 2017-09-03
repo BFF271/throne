@@ -34,7 +34,7 @@ export default function reducer(
         fullname: 'Jon Snow',
         age: 25,
         image: 'https://www.thesun.co.uk/wp-content/uploads/2017/05/jon-snow-and-the-nights-watch-e1494021230137.jpg?strip=all&w=960',
-        friends: [1,4],
+        friends: [1,2,4],
         friendreq: [],
         home: 'Winterfell'
       },

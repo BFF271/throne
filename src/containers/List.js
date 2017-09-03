@@ -22,20 +22,10 @@ class List extends Component {
     this.setState({
       filteredList: updatedList,
       searchTerm: e.target.value
-    }, console.log(this.state));
+    });
   }
-  //
-  // filterList: function(event){
-  //   var updatedList = this.state.initialItems;
-  //   updatedList = updatedList.filter(function(item){
-  //     return item.toLowerCase().search(
-  //       event.target.value.toLowerCase()) !== -1;
-  //   });
-  //   this.setState({items: updatedList});
-  // },
 
   render() {
-
     const userList = this.state.filteredList.map((user) => {
       return (
         <ListItem

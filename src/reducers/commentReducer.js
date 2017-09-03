@@ -52,7 +52,7 @@ export default function reducer(
         const profile = state.find((user) => {
           return user.user === action.payload.profileId;
         });
-
+        console.log(action.payload);
         let profileCopy = {};
         // Create the comment object for that user, if it doesn't exist
         if(profile === undefined) {
@@ -64,7 +64,7 @@ export default function reducer(
           profileCopy.posts = profileCopy.posts.concat ({
             id: Math.floor((Math.random() * 1000000) + 1),
             poster: action.payload.posterId,
-            post: 'New Post'
+            post: action.payload.comment
           })
         }
         // If the comment object for the user exists, amend it
@@ -75,7 +75,7 @@ export default function reducer(
           profileCopy.posts = profile.posts.concat({
             id: Math.floor((Math.random() * 1000000) + 1),
             poster: action.payload.posterId,
-            post: 'New Post'
+            post: action.payload.comment
           })
         }
 

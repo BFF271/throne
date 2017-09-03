@@ -18,6 +18,38 @@ function mapStateToProps(store) {
 }
 
 class Comments extends Component {
+  constructor() {
+    super();
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.state = {
+      showInput: true,
+      commentText: ''
+    }
+  }
+
+  handleInputChange(e) {
+    // Update the input changes
+    this.setState({
+      commentText: e.target.value
+    })
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+
+    this.props.dispatch(addComment(
+      this.props.userProfile.id,
+      this.props.activeUser.userId,
+      this.state.commentText
+    ))
+
+    // Reset the inputs
+    this.setState({
+      commentText: ''
+    })
+  }
 
   render() {
     let areFriends = false;
@@ -33,9 +65,9 @@ class Comments extends Component {
     });
 
     let comments = [];
+    // Build Comment Section. This could potentially be broken up further
     if(userComments !== undefined) {
       comments = userComments.posts.map((post) => {
-
         const postedBy = getUser(this.props.list, post.poster);
         // Can delete comment if its on your profile, or you posted the comment on another profile
         let canDeleteComment = false;
@@ -45,7 +77,6 @@ class Comments extends Component {
         }
 
         return (
-
           // add unique key for posts
           <div key={post.id} className='row'>
             <div className='col-md-3'>
@@ -74,19 +105,24 @@ class Comments extends Component {
       });
     }
 
-    let addCommentBtn = null;
+    let addCommentSection = null;
 
     if(this.props.activeUser.userId === undefined) {
-      addCommentBtn = <h4>Sign in to add a comment</h4>;
+      addCommentSection = <h4>Sign in to add a comment</h4>;
     }
-    else if(this.props.activeUser.userId === this.props.userProfile.id) {
-      addCommentBtn = <button onClick={() => this.props.dispatch(addComment(this.props.userProfile.id, this.props.activeUser.userId))} className="btn btn-default u-inline-block mr-2">Add Comment To Own Wall</button>
-    }
-    else if(!areFriends) {
-      addCommentBtn = <h4>You need to be friends to add a comment</h4>;
+    else if((!areFriends) && (this.props.activeUser.userId !== this.props.userProfile.id)) {
+      addCommentSection = <h4>You need to be friends to add a comment</h4>;
     }
     else {
-      addCommentBtn = <button onClick={() => this.props.dispatch(addComment(this.props.userProfile.id, this.props.activeUser.userId))} className="btn btn-default u-inline-block mr-2">Add Comment</button>
+      addCommentSection =
+      <form onSubmit={this.handleSubmit}>
+        <textarea
+          value={this.state.commentText}
+          onChange={this.handleInputChange}
+          className="comments-add-textarea form-control mb-1" />
+
+        <button type="submit" className="btn btn-default u-inline-block mr-2">Add Comment</button>
+      </form>
     }
 
 
@@ -97,12 +133,12 @@ class Comments extends Component {
             <h4>Comments</h4>
           </div>
           <div className="col-md-6">
-            { addCommentBtn }
+            { addCommentSection }
           </div>
         </div>
         <hr />
         { comments.length > 0 ? (
-            comments
+            comments.reverse()
           ) : (
             <h4>No Comments</h4>
           )
