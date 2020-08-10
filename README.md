@@ -1,4 +1,4 @@
-### Basic Social Media App created with React / Redux using various Game Of Thrones Characters as placeholders.
+#### Basic Social Media App created with React / Redux using various Game Of Thrones Characters as placeholders.
 
 * * *
 
