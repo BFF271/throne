@@ -1,4 +1,4 @@
-#### This is a social media app, the features I have / will be adding are...
+### Basic Social Media App created with React / Redux using various Game Of Thrones Characters as placeholders.
 
 * * *
 
