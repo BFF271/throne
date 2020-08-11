@@ -1,4 +1,5 @@
-#### Basic Social Media App created with React / Redux using various Game Of Thrones Characters as placeholders.
+#### Basic Social Media App created with React / Redux using various Game Of Thrones Characters as placeholders (Created in 2017).
+##### 2020 Update, I've fixed and added some new features however am not looking to spend a large amount of time going back to this task currently as there are other things I would like to spend my time on. Looking at the code now there are many things I would do differently mainly around how the state is managed / overall structure of the project, however it should now be functional and is a good exercise looking through the old code.
 
 * * *
 
