@@ -64,7 +64,7 @@ class Profile extends Component {
                   <hr />
                 </div>
                 <div className='col-md-6'>
-                  <img className="img-responsive" src={userProfile.image}  alt="Profile"/>
+                  <img className="img-fluid" src={userProfile.image}  alt="Profile"/>
                 </div>
                 <div className='col-md-6'>
                   <h4>Name: {userProfile.fullname}</h4>

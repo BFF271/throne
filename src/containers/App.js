@@ -6,7 +6,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { userDelete, userUpdate } from './../actions/userActions';
 
 // Components
-import Home from './../containers/Home';
+import About from './../containers/About';
 import Header from './../components/Header';
 import List from './../containers/List';
 import SignUp from './../containers/SignUp';
@@ -19,6 +19,7 @@ import './App.css';
 
 function mapStateToProps(store) {
   return {
+    router: store.router,
     activeUser: store.activeUser,
     list: store.users.list,
     comments: store.comments
@@ -41,10 +42,10 @@ class App extends Component {
       <BrowserRouter>
         <div className='container'>
           <Header />
-          <Route exact path='/' component={Home} />
+          <Route exact path='/about' component={About} />
           <Route path='/signup' component={SignUp} />
           <Route path='/login' component={Login}/>
-          <Route exact path='/list' component={() => {
+          <Route exact path='/' component={() => {
             return (
               <List
                 list={this.props.list}

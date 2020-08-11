@@ -10,8 +10,8 @@ export default function reducer(
         username: 'nstark',
         password: 'password',
         fullname: 'Ned Stark',
-        age: 34,
-        image: 'http://cdn.movieweb.com/img.news.tops/NE3A7iTEzhuC69_1_b/Game-Of-Thrones-Season-6-Ned-Stark.jpg',
+        age: 40,
+        image: 'https://vignette.wikia.nocookie.net/gameofthrones/images/3/34/Eddard_Stark.jpg/revision/latest/top-crop/width/360/height/360?cb=20190701140812',
         friends: [3, 4],
         friendreq: [],
         home: 'Winterfell'
@@ -22,7 +22,7 @@ export default function reducer(
         password: 'password',
         fullname: 'Sandor Clegane',
         age: 38,
-        image: 'http://i1.dailyrecord.co.uk/incoming/article10305461.ece/ALTERNATES/s615/JS34481475.jpg',
+        image: 'https://upload.wikimedia.org/wikipedia/en/5/59/The_Hound_in_%27The_Children%27.jpg',
         friends: [3, 4],
         friendreq: [],
         home: "Clegane's Keep"

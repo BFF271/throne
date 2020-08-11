@@ -74,3 +74,8 @@ label {
   right:0;
   width:100%;
 }
+
+.nav-profile-img {
+  width: 25px;
+  border-radius: 50%;
+}

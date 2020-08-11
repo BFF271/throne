@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Popover from 'react-bootstrap/Popover';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 
 // Actions
 import { userLogout } from './../actions/loginActions';
@@ -34,43 +37,84 @@ class Header extends Component {
       });
     }
 
+    const popover = (
+      <Popover id='popover-basic'>
+        <Popover.Title as='h3'>Popover right</Popover.Title>
+        <Popover.Content>
+          And here's some <strong>amazing</strong> content. It's very engaging.
+          right?
+        </Popover.Content>
+      </Popover>
+    );
 
     return (
-      <div className='row'>
-        <div className="col-md-6">
-          <h5 className='u-inline-block mr-2'><Link to='/'>Home</Link></h5>
-          <h5 className='u-inline-block mr-2'><Link to='/signup'>Sign Up</Link></h5>
-          <h5 className='u-inline-block mr-2'><Link to='/login'>Log In</Link></h5>
-          <h5 className='u-inline-block mr-2'><Link to='/list'>List</Link></h5>
-          { this.props.activeUser.userId &&
-            <Link to={`/profile/${this.props.activeUser.userId}`}>
-              <h5 className="u-inline-block mr-2">
-                View Your Profile
-              </h5>
-            </Link>
-          }
-        </div>
-        <div className="col-md-3">
-          <h5>Friend Requests:</h5>
-          {friendreq}
-        </div>
-        <div className="col-md-3">
-          {
-            this.props.activeUser.loggedIn ? (
-              <div>
-                <h5>Logged in as: {user.username}</h5>
-                <button className='btn btn-default' onClick={() => this.props.dispatch(userLogout())}>Log Out</button>
+        <nav className='navbar navbar-expand-lg navbar-light bg-light mb-4'>
+          <a className='navbar-brand' href='#'>Social Site</a>
+          <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation'>
+            <span className='navbar-toggler-icon'></span>
+          </button>
+          <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
+            <div className='navbar-nav'>
+              <Link to='/about' className='nav-item nav-link mr-2'>About</Link>
+              <Link to='/' className='nav-item nav-link mr-2'>List Users</Link>
+              { this.props.activeUser.userId &&
+                <Link className='nav-link nav-item' to={`/profile/${this.props.activeUser.userId}`}>
+                  <img src={user.image} className='nav-profile-img mr-1' />
+                  {user.username}
+                </Link>
+              }
+            </div>
+            <div className='navbar-nav ml-auto'>
+              {/*
+              <div className='nav-item'>
+                {friendreq}
               </div>
-            ) : (
-              <h5>Not Logged In</h5>
-            )
-          }
-        </div>
+              */}
 
-        <div className="col-md-12">
-          <hr/>
-        </div>
-      </div>
+              {this.props.activeUser.loggedIn &&
+                <div className='navbar-item'>
+                  <OverlayTrigger trigger='click' placement='bottom' overlay={
+                    <Popover id='popover-basic'>
+                      <Popover.Title as='h3'>Friend Requests</Popover.Title>
+                      <Popover.Content>
+                        {friendreq.length > 0 ? (
+                          <React.Fragment>
+                          {friendreq}
+                          </React.Fragment>
+                        ) : (
+                          <React.Fragment>
+                            No new users have added you :-(
+                          </React.Fragment>
+                        )}
+                      </Popover.Content>
+                    </Popover>
+                  }>
+                    <div>
+                      <i type='button' className='fa fa-users'></i>
+                      {friendreq.length > 0 &&
+                        <div className='ml-1 badge badge-danger'>{friendreq.length}</div>
+                      }
+                    </div>
+                  </OverlayTrigger>
+                </div>
+              }
+
+
+
+
+              {this.props.activeUser.loggedIn ? (
+                <div className='nav-item'>
+                  <button className='btn btn-default' onClick={() => this.props.dispatch(userLogout())}>Log Out</button>
+                </div>
+              ) : (
+                <React.Fragment>
+                  <Link to='/login' className='nav-item nav-link' href='#'>Log In</Link>
+                  <Link to='/signup' className='nav-item nav-link' href='#'>Sign Up</Link>
+                </React.Fragment>
+              )}
+            </div>
+          </div>
+        </nav>
     )
   }
 }
