@@ -121,7 +121,7 @@ class Comments extends Component {
           onChange={this.handleInputChange}
           className="comments-add-textarea form-control mb-1" />
 
-        <button type="submit" className="btn btn-default u-inline-block mr-2">Add Comment</button>
+        <button type="submit" className="btn btn-primary u-inline-block mr-2">Add Comment</button>
       </form>
     }
 

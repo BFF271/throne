@@ -22,30 +22,26 @@ function mapStateToProps(store) {
 class Header extends Component {
 
   render() {
-
     const user = getUser(this.props.list, this.props.activeUser.userId);
     let friendreq = [];
     if(user !== undefined) {
       friendreq = user.friendreq.map((req) => {
+        console.log('---req', req)
+        const friend = getUser(this.props.list, req);
+        console.log('--fri', friend)
         return (
-          <div key={req}>
-            <h5>{req}</h5>
-            <button onClick={() => this.props.dispatch(handleFriendRequest(req, this.props.activeUser.userId, true))} className='btn btn-success'>Accept</button>
-            <button onClick={() => this.props.dispatch(handleFriendRequest(req, this.props.activeUser.userId, false))} className='btn btn-danger'>Reject</button>
+          <div className='text-center' key={req}>
+            <Link className='mb-2 d-block' to={`/profile/${friend.id}`}>
+              <img src={friend.image} className='nav-profile-img mr-1' />
+              <span className='d-inline-block'>{friend.fullname}</span>
+            </Link>
+            <button onClick={() => this.props.dispatch(handleFriendRequest(req, this.props.activeUser.userId, true))} className='btn btn-success btn-sm mr-2'>Accept</button>
+            <button onClick={() => this.props.dispatch(handleFriendRequest(req, this.props.activeUser.userId, false))} className='btn btn-danger btn-sm'>Nope</button>
+            <hr />
           </div>
         )
       });
     }
-
-    const popover = (
-      <Popover id='popover-basic'>
-        <Popover.Title as='h3'>Popover right</Popover.Title>
-        <Popover.Content>
-          And here's some <strong>amazing</strong> content. It's very engaging.
-          right?
-        </Popover.Content>
-      </Popover>
-    );
 
     return (
         <nav className='navbar navbar-expand-lg navbar-light bg-light mb-4'>
@@ -65,12 +61,6 @@ class Header extends Component {
               }
             </div>
             <div className='navbar-nav ml-auto'>
-              {/*
-              <div className='nav-item'>
-                {friendreq}
-              </div>
-              */}
-
               {this.props.activeUser.loggedIn &&
                 <div className='navbar-item'>
                   <OverlayTrigger trigger='click' placement='bottom' overlay={

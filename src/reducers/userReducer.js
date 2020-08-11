@@ -113,16 +113,61 @@ export default function reducer(
 
       // User Update, can only be updated if that user is logged in
       case 'USER_UPDATE': {
-        let newList = [...state.list];
 
-        const userIndex = newList.findIndex((user) => {
-          return user.id === action.payload.id;
-        });
+        // age: 40
+        // friendreq: []
+        // friends: (2) [3, 4]
+        // fullname: "Ned Stark"
+        // home: "Winterfell"
+        // id: 1
+        // image: "https://vignette.wikia.nocookie.net/gameofthrones/images/3/34/Eddard_Stark.jpg/revision/latest/top-crop/width/360/height/360?cb=20190701140812"
+        // password: "password"
+        // username: "nstark"
 
-        newList[userIndex] = action.payload;
+        // [{id:1, etc},{}]
+
+        // find object in array where id = action.payload.id
+
+
+
+        //
+        //
+        // const userWithNewDetails = {
+        //   ...state.list[]
+        // }
+
+
+        console.log('action', action.payload.id)
+
+
+        console.log('--state.list', state.list)
+
+        const origUserList = state.list
+
+        const updatedUserList = origUserList.reduce((acc, user) => {
+          console.log('---user', user)
+          console.log('--acc', acc)
+
+          if (user.id === action.payload.id) {
+            console.log('YES THI SI SIT')
+          }
+
+          const isUserToAmend = user.id === action.payload.id
+
+          if (isUserToAmend) {
+            acc.push({
+              ...user,
+              ...action.payload.newDetails
+            })
+          } else {
+            acc.push(user)
+          }
+          return acc
+        }, [])
+
         return {
           ...state,
-          list: newList
+          list: updatedUserList
         }
       }
 

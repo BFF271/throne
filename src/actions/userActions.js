@@ -22,8 +22,10 @@ export function userUpdate(id, fullname, age) {
     type: 'USER_UPDATE',
     payload: {
       id,
-      fullname,
-      age
+      newDetails: {
+        age,
+        fullname  
+      }
     }
   }
 }

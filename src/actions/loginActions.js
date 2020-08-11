@@ -14,3 +14,9 @@ export function userLogout() {
     type: 'LOG_OUT'
   }
 }
+
+export function toggleProfileEditing() {
+  return {
+    type: 'TOGGLE_PROFILE_EDITING'
+  }
+}

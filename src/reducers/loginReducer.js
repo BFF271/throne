@@ -1,7 +1,8 @@
 export default function reducer(
   state = {
     loggedIn: false,
-    userId: undefined
+    userId: undefined,
+    isEditingProfile: false
   }, action) {
     switch(action.type) {
       case 'LOG_IN': {
@@ -29,7 +30,17 @@ export default function reducer(
         console.log('Logging Out');
         return {
           loggedIn: false,
-          userId: undefined
+          userId: undefined,
+          isEditingProfile: false
+        }
+      }
+
+      // Can just have in login reducer for now
+      case 'TOGGLE_PROFILE_EDITING': {
+        console.log('TOGGLE_PROFILE_EDITING');
+        return {
+          ...state,
+          isEditingProfile: !state.isEditingProfile
         }
       }
     }
