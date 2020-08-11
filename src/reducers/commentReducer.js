@@ -92,7 +92,23 @@ export default function reducer(
       }
       case 'DELETE_COMMENT': {
         console.log(action.payload);
-        return state;
+
+        console.log(state)
+
+        const origCommentsArray = state
+
+        const updatedCommentsArray = origCommentsArray.reduce((acc, obj) => {
+          let updatedObj = obj
+
+          updatedObj.posts = obj.posts.filter(post => {
+            return post.id !== action.payload.commentId
+          })
+
+          acc.push(updatedObj)
+          return acc
+        }, [])
+
+        return updatedCommentsArray;
       }
     }
   return state;

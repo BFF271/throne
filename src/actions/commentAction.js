@@ -10,11 +10,10 @@ export function addComment(profileId, posterId, comment) {
   }
 }
 
-export function deleteComment(profileId, commentId) {
+export function deleteComment(commentId) {
   return {
     type: 'DELETE_COMMENT',
     payload: {
-      profileId,
       commentId
     }
   }

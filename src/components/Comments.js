@@ -96,7 +96,11 @@ class Comments extends Component {
 
             <div className='col-md-3'>
               { canDeleteComment === true &&
-                <button onClick={() => this.props.dispatch(deleteComment(this.props.userProfile.id, post.id, this.props.list))} className="btn btn-danger">Delete Comment</button>
+                <button
+                  onClick={() => this.props.dispatch(deleteComment(post.id))}
+                  className="btn btn-danger">
+                  Delete Comment
+                </button>
               }
             </div>
 
