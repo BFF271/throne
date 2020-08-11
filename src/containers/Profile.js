@@ -140,9 +140,9 @@ class Profile extends Component {
                     </form>
                   ) : (
                     <React.Fragment>
-                      <h4>Name: {userProfile.fullname}</h4>
-                      <h4>Age: {userProfile.age}</h4>
-                      <h4>Home: {userProfile.home}</h4>
+                      <h5>Name: {userProfile.fullname}</h5>
+                      <h5>Age: {userProfile.age}</h5>
+                      <h5>Home: {userProfile.home}</h5>
                     </React.Fragment>
                   )}
 

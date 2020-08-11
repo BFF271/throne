@@ -20,3 +20,14 @@ export function toggleProfileEditing() {
     type: 'TOGGLE_PROFILE_EDITING'
   }
 }
+
+export function quickLogIn(id, list) {
+  console.log('fef3e')
+  return {
+    type: 'QUICK_LOG_IN',
+    payload: {
+      id,
+      list
+    }
+  }
+}

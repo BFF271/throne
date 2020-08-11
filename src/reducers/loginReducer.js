@@ -26,6 +26,32 @@ export default function reducer(
         }
       }
 
+      // Log in through list page quickly
+      case 'QUICK_LOG_IN': {
+        console.log('dwfrfwr')
+        // Check to see if the user exists
+        console.log('--payload', action.payload)
+        const activeUser = action.payload.list.find((user) => {
+          return user.id === action.payload.id;
+        })
+
+        console.log('BLAH', activeUser)
+
+        if(activeUser === undefined) {
+          // If user log in failed return -1 (-1 means noone logged in)
+          return {
+            loggedIn: false,
+            userId: undefined
+          };
+        }
+        else {
+          return {
+            loggedIn: true,
+            userId: activeUser.id
+          }
+        }
+      }
+
       case 'LOG_OUT': {
         console.log('Logging Out');
         return {

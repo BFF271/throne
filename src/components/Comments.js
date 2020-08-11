@@ -60,7 +60,10 @@ class Comments extends Component {
 
     // Get comments for current profile
     let userComments = {};
+
+    console.log('---this.props.comments', this.props.comments)
     userComments = this.props.comments.find((comment) => {
+      console.log('--comment', comment)
       return comment.user === Number(this.props.userProfile.id);
     });
 
@@ -80,7 +83,7 @@ class Comments extends Component {
           // add unique key for posts
           <div key={post.id} className='row'>
             <div className='col-md-3'>
-              <img className="list-img" src={postedBy.image} alt="Posted By" />
+              <img className="list-img" src={postedBy !== undefined ? postedBy.image : 'https://www.marshall.edu/it/files/question-mark-circle-icon.png'} alt="Posted By" />
             </div>
 
             <div className='col-md-3'>
@@ -88,7 +91,7 @@ class Comments extends Component {
             </div>
 
             <div className='col-md-3'>
-              {postedBy.fullname}
+              {postedBy !== undefined ? postedBy.fullname : 'User Deleted'}
             </div>
 
             <div className='col-md-3'>

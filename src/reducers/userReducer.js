@@ -103,39 +103,43 @@ export default function reducer(
       }
 
       // Create a new array from list, that doesn't include the user to delete
+
+      // TODO!!! - ALSO NEED TO DELETE ALL FREIEND REQUESTS FROM THAT USER
       case 'USER_DELETE': {
+        const origUserList = state.list
+        console.log('oul', origUserList)
+
+        const updatedUserList = origUserList.reduce((acc, user) => {
+          const updatedUser = user
+
+          console.log('---user.id', action.payload.userId)
+          if (user.id !== action.payload.userId) {
+            // if we arent deleting this user, we need to remove the user being delted from any friend requets
+            const newFriendReqs = user.friendreq;
+
+            console.log('---1', newFriendReqs);
+
+            const index = newFriendReqs.indexOf(action.payload.userId);
+            if (index > -1) {
+              newFriendReqs.splice(index, 1);
+            }
+
+            console.log('---2', newFriendReqs);
+            updatedUser.friendreq = newFriendReqs
+
+            acc.push(updatedUser)
+          }
+          return acc
+        }, [])
+
+        console.log('uul', updatedUserList)
         return {
-          list: state.list.filter((user) => {
-            return user.id !== action.payload;
-          })
+          list: updatedUserList
         }
       }
 
       // User Update, can only be updated if that user is logged in
       case 'USER_UPDATE': {
-
-        // age: 40
-        // friendreq: []
-        // friends: (2) [3, 4]
-        // fullname: "Ned Stark"
-        // home: "Winterfell"
-        // id: 1
-        // image: "https://vignette.wikia.nocookie.net/gameofthrones/images/3/34/Eddard_Stark.jpg/revision/latest/top-crop/width/360/height/360?cb=20190701140812"
-        // password: "password"
-        // username: "nstark"
-
-        // [{id:1, etc},{}]
-
-        // find object in array where id = action.payload.id
-
-
-
-        //
-        //
-        // const userWithNewDetails = {
-        //   ...state.list[]
-        // }
-
 
         console.log('action', action.payload.id)
 

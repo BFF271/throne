@@ -3,13 +3,6 @@ import React, { Component } from 'react';
 import { userLogin } from './../actions/loginActions';
 import { connect } from 'react-redux';
 
-function mapStateToProps(store) {
-  return {
-    list: store.users.list,
-    loggedIn: store.activeUser.loggedIn
-  }
-}
-
 class Login extends Component {
   constructor() {
     super();
@@ -43,14 +36,6 @@ class Login extends Component {
   render() {
     return (
       <div>
-
-
-      <div>
-
-      </div>
-
-
-
         {
           this.props.loggedIn ? (
             <h3>Already Logged In</h3>
@@ -90,6 +75,13 @@ class Login extends Component {
         }
       </div>
     )
+  }
+}
+
+function mapStateToProps(store) {
+  return {
+    list: store.users.list,
+    loggedIn: store.activeUser.loggedIn
   }
 }
 

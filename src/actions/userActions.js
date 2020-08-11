@@ -9,7 +9,9 @@ export function userDelete(user) {
   return function(dispatch) {
     dispatch({
       type: 'USER_DELETE',
-      payload: user
+      payload: {
+        userId: user
+      }
     });
     dispatch({
       type: 'LOG_OUT'
@@ -24,7 +26,7 @@ export function userUpdate(id, fullname, age) {
       id,
       newDetails: {
         age,
-        fullname  
+        fullname
       }
     }
   }

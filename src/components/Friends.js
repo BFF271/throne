@@ -57,7 +57,7 @@ class Friends extends Component {
 
     return (
       <div>
-        <h1 onClick={this.logstuff}>Friends List</h1>
+        <h4 onClick={this.logstuff}>Friends</h4>
 
         {friends}
       </div>
