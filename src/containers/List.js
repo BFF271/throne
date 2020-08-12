@@ -7,7 +7,7 @@ class List extends Component {
     super(props);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.state = {
-      searchTerm: "",
+      searchTerm: '',
       filteredList: this.props.list
     }
   }
@@ -38,18 +38,18 @@ class List extends Component {
 
     return (
       <div>
-        <div className="row">
-          <div className="col-md-6">
+        <div className='row'>
+          <div className='col-md-6'>
             <h4>User List</h4>
           </div>
-          <div className="col-md-6">
-            <form className="form-inline">
+          <div className='col-md-6'>
+            <form className='form-inline'>
               <label>Search For User:</label>
               <input
                 value={this.state.searchTerm}
                 onChange={this.handleInputChange}
-                className="form-control"
-                type="text"/>
+                className='form-control'
+                type='text'/>
             </form>
           </div>
         </div>

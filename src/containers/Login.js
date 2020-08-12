@@ -43,25 +43,25 @@ class Login extends Component {
             <div>
               <h4>Log In</h4>
               <hr />
-              <form className="form-inline" onSubmit={this.handleSubmit}>
-                <div className="form-group">
+              <form className='form-inline' onSubmit={this.handleSubmit}>
+                <div className='form-group'>
                   <label>Username</label>
                   <input
-                    name="username"
+                    name='username'
                     value={this.state.username}
                     onChange={this.handleInputChange}
-                    className="form-control"
-                    type="text"/>
+                    className='form-control'
+                    type='text'/>
                 </div>
 
-                <div className="form-group">
+                <div className='form-group'>
                   <label>Password</label>
                   <input
-                    name="password"
+                    name='password'
                     value={this.state.password}
                     onChange={this.handleInputChange}
-                    className="form-control"
-                    type="text"/>
+                    className='form-control'
+                    type='text'/>
                 </div>
                 <input
                   type='submit'
@@ -69,7 +69,7 @@ class Login extends Component {
                   className='btn btn-success'
                 />
               </form>
-              <p className='small d-block mt-1 font-italic'>(Note: ALL existing user passwords are "password")</p>
+              <p className='small d-block mt-1 font-italic'>(Note: ALL existing user passwords are 'password')</p>
               <hr/>
             </div>
           )

@@ -26,9 +26,7 @@ class Header extends Component {
     let friendreq = [];
     if(user !== undefined) {
       friendreq = user.friendreq.map((req) => {
-        console.log('---req', req)
         const friend = getUser(this.props.list, req);
-        console.log('--fri', friend)
         return (
           <div className='text-center' key={req}>
             <Link className='mb-2 d-block' to={`/profile/${friend.id}`}>
@@ -45,7 +43,7 @@ class Header extends Component {
 
     return (
         <nav className='mb-4 navbar navbar-expand-lg navbar-dark bg-dark'>
-          <a className='navbar-brand' href='#'>Social Site</a>
+          <Link to='/' className='navbar-brand'>Game of Social Networking</Link>
           <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation'>
             <span className='navbar-toggler-icon'></span>
           </button>

@@ -40,34 +40,34 @@ class EditUser extends Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="col-md-12">
+      <div className='row'>
+        <div className='col-md-12'>
           <hr />
-          <form className="form-inline" onSubmit={this.handleSubmit}>
-            <div className="form-group">
+          <form className='form-inline' onSubmit={this.handleSubmit}>
+            <div className='form-group'>
               <label>Name</label>
               <input
-                name="fullname"
+                name='fullname'
                 value={this.state.fullname}
                 onChange={this.handleInputChange}
-                className="form-control"
-                type="text"
+                className='form-control'
+                type='text'
               />
             </div>
-            <div className="form-group">
+            <div className='form-group'>
               <label>Age</label>
               <input
-                name="age"
+                name='age'
                 value={this.state.age}
                 onChange={this.handleInputChange}
-                className="form-control"
-                type="text"
+                className='form-control'
+                type='text'
               />
             </div>
             <input
-              type="submit"
-              value="Confirm Edit"
-              className="btn btn-success"
+              type='submit'
+              value='Confirm Edit'
+              className='btn btn-success'
             />
           </form>
           <hr/>

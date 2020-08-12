@@ -22,7 +22,6 @@ export function toggleProfileEditing() {
 }
 
 export function quickLogIn(id, list) {
-  console.log('fef3e')
   return {
     type: 'QUICK_LOG_IN',
     payload: {

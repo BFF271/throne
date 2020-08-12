@@ -10,7 +10,6 @@ export default function reducer(
         const activeUser = action.payload.list.find((user) => {
           return ((user.username === action.payload.username) && (user.password === action.payload.password));
         })
-        console.log(action.payload.list);
         if(activeUser === undefined) {
           // If user log in failed return -1 (-1 means noone logged in)
           return {
@@ -28,14 +27,10 @@ export default function reducer(
 
       // Log in through list page quickly
       case 'QUICK_LOG_IN': {
-        console.log('dwfrfwr')
         // Check to see if the user exists
-        console.log('--payload', action.payload)
         const activeUser = action.payload.list.find((user) => {
           return user.id === action.payload.id;
         })
-
-        console.log('BLAH', activeUser)
 
         if(activeUser === undefined) {
           // If user log in failed return -1 (-1 means noone logged in)
@@ -53,7 +48,6 @@ export default function reducer(
       }
 
       case 'LOG_OUT': {
-        console.log('Logging Out');
         return {
           loggedIn: false,
           userId: undefined,
@@ -63,7 +57,6 @@ export default function reducer(
 
       // Can just have in login reducer for now
       case 'TOGGLE_PROFILE_EDITING': {
-        console.log('TOGGLE_PROFILE_EDITING');
         return {
           ...state,
           isEditingProfile: !state.isEditingProfile

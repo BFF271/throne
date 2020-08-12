@@ -130,24 +130,19 @@ export default function reducer(
       // TODO!!! - ALSO NEED TO DELETE ALL FREIEND REQUESTS FROM THAT USER
       case 'USER_DELETE': {
         const origUserList = state.list
-        console.log('oul', origUserList)
 
         const updatedUserList = origUserList.reduce((acc, user) => {
           const updatedUser = user
 
-          console.log('---user.id', action.payload.userId)
           if (user.id !== action.payload.userId) {
             // if we arent deleting this user, we need to remove the user being delted from any friend requets
             const newFriendReqs = user.friendreq;
-
-            console.log('---1', newFriendReqs);
 
             const index = newFriendReqs.indexOf(action.payload.userId);
             if (index > -1) {
               newFriendReqs.splice(index, 1);
             }
 
-            console.log('---2', newFriendReqs);
             updatedUser.friendreq = newFriendReqs
 
             acc.push(updatedUser)
@@ -163,22 +158,9 @@ export default function reducer(
 
       // User Update, can only be updated if that user is logged in
       case 'USER_UPDATE': {
-
-        console.log('action', action.payload.id)
-
-
-        console.log('--state.list', state.list)
-
         const origUserList = state.list
 
         const updatedUserList = origUserList.reduce((acc, user) => {
-          console.log('---user', user)
-          console.log('--acc', acc)
-
-          if (user.id === action.payload.id) {
-            console.log('YES THI SI SIT')
-          }
-
           const isUserToAmend = user.id === action.payload.id
 
           if (isUserToAmend) {
@@ -226,7 +208,6 @@ export default function reducer(
             // Then check to see if they are friends already.
             if(!userToSendReq.friends.some(checkIfAlreadyFriend)) {
               userToSendReq.friendreq = userToSendReq.friendreq.concat(action.payload.activeUserId);
-              console.log('Sending friend Request');
             }
             else {
               console.log('Already friends')
@@ -244,12 +225,7 @@ export default function reducer(
           ...state,
           list: newList
         }
-
-
-        console.log(userToSendReq);
-        console.log(action.payload);
       }
-
 
       // Handle friend request
       // TODO - Refactor this
@@ -289,7 +265,6 @@ export default function reducer(
           userSent.friendreq.splice(indexSent, 1);
         }
 
-        console.log(userAccepting);
         return {
           ...state,
           list: newList
@@ -298,7 +273,6 @@ export default function reducer(
 
       // Remove friend
       case 'REMOVE_FRIEND': {
-
         // Create new list to be modified
         let newList = [...state.list];
 
@@ -323,7 +297,6 @@ export default function reducer(
           user2.friends.splice(index2, 1);
         }
 
-        console.log(action.payload);
         return {
           ...state,
           list: newList

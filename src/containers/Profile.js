@@ -20,9 +20,7 @@ function mapStateToProps(store) {
   }
 }
 
-// TODO - you can currently delete friends from other peoples profiles, do a check for this!!!
 class Profile extends Component {
-
   constructor(props) {
     super()
 
@@ -38,22 +36,15 @@ class Profile extends Component {
   }
 
   handleFormChange(e) {
-    console.log(e.target.value)
-    console.log(e.target.id)
     this.setState({
       inputValues: {
         ...this.state.inputValues,
         [e.target.id]: (e.target.id === 'age') ? Number(e.target.value) : e.target.value
       }
-    }, () => {
-      console.log(this.state)
     })
   }
 
-
   render() {
-
-    console.log('activeuser', this.props.activeUser)
     // Is there a user with this id stored?
     const userProfile = getUser(this.props.list, this.props.match.params.id);
 
@@ -78,7 +69,7 @@ class Profile extends Component {
                   {activeUserProfile &&
                     <div>
                       <button
-                        className="btn btn-danger btn-block u-inline-block mr-2"
+                        className='btn btn-danger btn-block u-inline-block mr-2'
                         style={{borderTopLeftRadius: '0px', borderTopRightRadius: '0px'}}
                         onClick={() => this.props.dispatch(userDelete(this.props.activeUser.userId))}>
                         Delete Your (Whole) Profile
@@ -147,7 +138,7 @@ class Profile extends Component {
                   {activeUserProfile &&
                     <React.Fragment>
                       <button
-                        className="btn btn-primary u-inline-block"
+                        className='btn btn-primary u-inline-block'
                         onClick={() => this.props.dispatch(toggleProfileEditing())}>
                         {this.props.activeUser.isEditingProfile ? (
                           <span>Cancel Editing</span>
@@ -165,8 +156,8 @@ class Profile extends Component {
                 </div>
               </div>
               <hr/>
-              <div className="row">
-                <div className="col-md-12">
+              <div className='row'>
+                <div className='col-md-12'>
                   <Comments
                     userProfile={userProfile}
                   />

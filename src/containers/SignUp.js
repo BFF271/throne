@@ -62,41 +62,41 @@ class SignUp extends Component {
         <h4>Create A New User</h4>
         <hr />
         <form onSubmit={this.handleSubmit}>
-          <div className="form-group">
+          <div className='form-group'>
             <label>Username</label>
             <input
-              name="username"
+              name='username'
               value={this.state.username}
               onChange={this.handleInputChange}
-              className="form-control"
-              type="text"/>
+              className='form-control'
+              type='text'/>
           </div>
-          <div className="form-group">
+          <div className='form-group'>
             <label>Password</label>
             <input
-              name="password"
+              name='password'
               value={this.state.password}
               onChange={this.handleInputChange}
-              className="form-control"
-              type="text"/>
+              className='form-control'
+              type='text'/>
           </div>
-          <div className="form-group">
+          <div className='form-group'>
             <label>Fullname</label>
             <input
-              name="fullname"
+              name='fullname'
               value={this.state.fullname}
               onChange={this.handleInputChange}
-              className="form-control"
-              type="text"/>
+              className='form-control'
+              type='text'/>
           </div>
-          <div className="form-group">
+          <div className='form-group'>
             <label>Age</label>
             <input
-              name="age"
+              name='age'
               value={this.state.age}
               onChange={this.handleInputChange}
-              className="form-control"
-              type="text"/>
+              className='form-control'
+              type='text'/>
           </div>
           <input
             type='submit'

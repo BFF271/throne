@@ -92,7 +92,6 @@ export default function reducer(
         const profile = state.find((user) => {
           return user.user === action.payload.profileId;
         });
-        console.log(action.payload);
         let profileCopy = {};
         // Create the comment object for that user, if it doesn't exist
         if(profile === undefined) {
@@ -131,10 +130,6 @@ export default function reducer(
         return newState;
       }
       case 'DELETE_COMMENT': {
-        console.log(action.payload);
-
-        console.log(state)
-
         const origCommentsArray = state
 
         const updatedCommentsArray = origCommentsArray.reduce((acc, obj) => {
