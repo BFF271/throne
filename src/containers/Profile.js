@@ -30,7 +30,8 @@ class Profile extends Component {
     this.state = {
       inputValues: {
         name: userProfile.fullname,
-        age: userProfile.age
+        age: userProfile.age,
+        home: userProfile.home
       }
     }
     this.handleFormChange = this.handleFormChange.bind(this)
@@ -72,33 +73,20 @@ class Profile extends Component {
           userExists ? (
             <div>
               <div className='row'>
-                <div className="col-md-6">
-                  <h4>Profile</h4>
-                </div>
-                <div className="col-md-6">
+                <div className='col-md-5'>
+                  <div style={{backgroundImage:`url(${userProfile.image})`, backgroundSize: 'cover', backgroundPosition: 'center top', paddingTop: '100%', width: '100%'}} />
                   {activeUserProfile &&
                     <div>
                       <button
-                        className="btn btn-danger u-inline-block mr-2"
+                        className="btn btn-danger btn-block u-inline-block mr-2"
+                        style={{borderTopLeftRadius: '0px', borderTopRightRadius: '0px'}}
                         onClick={() => this.props.dispatch(userDelete(this.props.activeUser.userId))}>
-                        Delete Your Profile
-                      </button>
-
-                      <button
-                        className="btn btn-primary u-inline-block"
-                        onClick={() => this.props.dispatch(toggleProfileEditing())}>
-                        Edit Profile
+                        Delete Your (Whole) Profile
                       </button>
                     </div>
                   }
                 </div>
-                <div className="col-md-12">
-                  <hr />
-                </div>
-                <div className='col-md-6'>
-                  <img className="img-fluid" src={userProfile.image}  alt="Profile"/>
-                </div>
-                <div className='col-md-6'>
+                <div className='col-md-7'>
 
                   {this.props.activeUser.isEditingProfile ? (
                     <form>
@@ -124,15 +112,24 @@ class Profile extends Component {
                           placeholder='Age' />
                       </div>
 
+                      <div className='form-group'>
+                        <label htmlFor='nameInput'>Home</label>
+                        <input
+                          type='text'
+                          className='form-control'
+                          id='home'
+                          value={this.state.inputValues.home}
+                          onChange={this.handleFormChange}
+                          placeholder='Home' />
+                      </div>
+
                       <button
                         type='submit'
                         className='btn btn-primary my-1'
                         onClick={(e) => {
                           e.preventDefault()
-                          this.props.dispatch(userUpdate(this.props.activeUser.userId, this.state.inputValues.name, this.state.inputValues.age))
+                          this.props.dispatch(userUpdate(this.props.activeUser.userId, this.state.inputValues.name, this.state.inputValues.age, this.state.inputValues.home))
                           this.props.dispatch(toggleProfileEditing())
-
-                          console.log('CLICKED!')
                         }}
                       >
                         Update Details
@@ -147,6 +144,20 @@ class Profile extends Component {
                   )}
 
                   <hr />
+                  {activeUserProfile &&
+                    <React.Fragment>
+                      <button
+                        className="btn btn-primary u-inline-block"
+                        onClick={() => this.props.dispatch(toggleProfileEditing())}>
+                        {this.props.activeUser.isEditingProfile ? (
+                          <span>Cancel Editing</span>
+                        ) : (
+                          <span>Edit Profile</span>
+                        )}
+                      </button>
+                      <hr />
+                    </React.Fragment>
+                  }
                   <Friends
                     userProfile={userProfile}
                     activeUserProfile={activeUserProfile}

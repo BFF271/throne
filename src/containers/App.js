@@ -40,25 +40,27 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div className='container'>
+        <React.Fragment>
           <Header />
-          <Route exact path='/about' component={About} />
-          <Route path='/signup' component={SignUp} />
-          <Route path='/login' component={Login}/>
-          <Route exact path='/' component={() => {
-            return (
-              <List
-                list={this.props.list}
-                userUpdate={this.userUpdate.bind(this)}
-                userDelete={this.userDelete.bind(this)}
-              />
-            )
-          }}/>
+          <div className='container'>
+            <Route exact path='/about' component={About} />
+            <Route path='/signup' component={SignUp} />
+            <Route path='/login' component={Login}/>
+            <Route exact path='/' component={() => {
+              return (
+                <List
+                  list={this.props.list}
+                  userUpdate={this.userUpdate.bind(this)}
+                  userDelete={this.userDelete.bind(this)}
+                />
+              )
+            }}/>
 
-          { /* Pass in the react-router-dom props via props. Gives access to .match so I can search user id --- TODO - The other routes should use this method also.*/}
-          <Route path='/profile/:id' component={Profile} />
-          <DevBar props={this.props}/>
-        </div>
+            { /* Pass in the react-router-dom props via props. Gives access to .match so I can search user id --- TODO - The other routes should use this method also.*/}
+            <Route path='/profile/:id' component={Profile} />
+            <DevBar props={this.props}/>
+          </div>
+        </React.Fragment>
       </BrowserRouter>
     );
   }

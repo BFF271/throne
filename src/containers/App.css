@@ -34,6 +34,11 @@ label {
   margin-bottom: 8px;
 }
 
+hr {
+  border-bottom: 1px solid white;
+  opacity: 25%;
+}
+
 
 
 /* Test Styles */
@@ -44,10 +49,6 @@ label {
   resize: none;
 }
 
-.list-img {
-  width: 100px;
-  margin-right: 3rem;
-}
 
 .profile-friend {
   width: 160px;
@@ -68,14 +69,22 @@ label {
 }
 
 .profile-friend--delete {
-  position: absolute;
-  bottom: 0;
-  left:0;
-  right:0;
   width:100%;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .nav-profile-img {
   width: 25px;
   border-radius: 50%;
+}
+
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.comment-img-wrapper {
+  width: 160px;
+  height: 160px;
 }

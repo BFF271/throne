@@ -4,14 +4,19 @@ export default function reducer(
         user: 4,
         posts: [
           {
+            id: 1000,
+            poster: 3,
+            post: "The Dire Wolf Is The Sigil Of Your House. They Were Meant To Have Them."
+          },
+          {
             id: 999,
             poster: 3,
-            post: 'User 4 First Comment from user 3'
+            post: "First Lesson, Stick 'Em With The Pointy End."
           },
           {
             id: 998,
             poster: 4,
-            post: 'User 4 First Comment from user 4'
+            post: "Finally I've arrived at Braavos!"
           }
         ]
       },
@@ -20,8 +25,8 @@ export default function reducer(
         posts: [
           {
             id: 997,
-            poster: 3,
-            post: 'User 1 First Comment by user 3'
+            poster: 4,
+            post: "Tell them the North remembers."
           }
         ]
       },
@@ -31,20 +36,55 @@ export default function reducer(
           {
             id: 996,
             poster: 3,
-            post: 'User 2 First Comment by user 3'
+            post: "We Can't Defend The North If Only Half The Population Is Fighting."
           },
           {
             id: 995,
             poster: 3,
-            post: 'User 2 Second Comment by user 3'
+            post: "I Swore A Vow... If I Don't Take My Own Words Seriously, What Sort Of Lord Of Winterfell Would I Be?"
           },
           {
             id: 994,
             poster: 4,
-            post: 'User 2 Third Comment by user 4'
+            post: 'Your on my list!!!'
           }
         ]
-      }
+      },
+      {
+        user: 5,
+        posts: [
+          {
+            id: 993,
+            poster: 7,
+            post: 'So you agree... The Starks are enemies?'
+          },
+          {
+            id: 992,
+            poster: 7,
+            post: "I am the king! I will punish you."
+          }
+        ]
+      },
+      {
+        user: 7,
+        posts: [
+          {
+            id: 991,
+            poster: 5,
+            post: "Everyone Who Isn't Us Is An Enemy."
+          }
+        ]
+      },
+      {
+        user: 3,
+        posts: [
+          {
+            id: 990,
+            poster: 9,
+            post: "Never forget what you are, the rest of the world will not. Wear it like armor and it can never be used to hurt you."
+          }
+        ]
+      },
   ], action) {
     switch(action.type) {
       case 'ADD_COMMENT': {

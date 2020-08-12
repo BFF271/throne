@@ -80,34 +80,37 @@ class Comments extends Component {
         }
 
         return (
-          // add unique key for posts
-          <div key={post.id} className='row'>
-            <div className='col-md-3'>
-              <img className="list-img" src={postedBy !== undefined ? postedBy.image : 'https://www.marshall.edu/it/files/question-mark-circle-icon.png'} alt="Posted By" />
-            </div>
-
-            <div className='col-md-3'>
-              {post.post}
-            </div>
-
-            <div className='col-md-3'>
-              {postedBy !== undefined ? postedBy.fullname : 'User Deleted'}
-            </div>
-
-            <div className='col-md-3'>
-              { canDeleteComment === true &&
-                <button
-                  onClick={() => this.props.dispatch(deleteComment(post.id))}
-                  className="btn btn-danger">
-                  Delete Comment
-                </button>
-              }
-            </div>
-
-            <div className="col-md-12">
-              <hr />
+          <div key={post.id} lass="container-fluid">
+            <div class="row">
+              <div class="col-12 mt-3">
+                <div class="card">
+                  <div class="card-horizontal">
+                    <div class="comment-img-wrapper">
+                      <div style={{backgroundImage: postedBy !== undefined ? `url(${postedBy.image})` : 'url(https://www.festivalclaca.cat/imgfv/b/72-722963_circular-question-mark-button-question-mark-icon-white.png)', backgroundSize: 'cover', backgroundPosition: 'center top', paddingTop: '100%', width: '100%', borderTopLeftRadius:'0.25rem', borderBottomLeftRadius: '0.25rem'}} />
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title text-muted">
+                        Posted By:&nbsp;
+                        {postedBy !== undefined ? postedBy.fullname : 'User Deleted'}
+                      </h5>
+                      <p class="card-text">
+                        {post.post}
+                      </p>
+                      { canDeleteComment === true &&
+                        <button
+                          onClick={() => this.props.dispatch(deleteComment(post.id))}
+                          className="btn btn-danger">
+                          Delete Comment
+                        </button>
+                      }
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+
+
         )
       });
     }
@@ -118,7 +121,7 @@ class Comments extends Component {
       addCommentSection = <h4>Sign in to add a comment</h4>;
     }
     else if((!areFriends) && (this.props.activeUser.userId !== this.props.userProfile.id)) {
-      addCommentSection = <h4>You need to be friends to add a comment</h4>;
+      addCommentSection = <h5>You need to be friends to add a comment</h5>;
     }
     else {
       addCommentSection =

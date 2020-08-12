@@ -19,14 +19,15 @@ export function userDelete(user) {
   }
 }
 
-export function userUpdate(id, fullname, age) {
+export function userUpdate(id, fullname, age, home) {
   return {
     type: 'USER_UPDATE',
     payload: {
       id,
       newDetails: {
         age,
-        fullname
+        fullname,
+        home
       }
     }
   }

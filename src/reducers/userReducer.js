@@ -34,7 +34,7 @@ export default function reducer(
         fullname: 'Jon Snow',
         age: 25,
         image: 'https://www.thesun.co.uk/wp-content/uploads/2017/05/jon-snow-and-the-nights-watch-e1494021230137.jpg?strip=all&w=960',
-        friends: [1,2,4],
+        friends: [1,2,4,8,9],
         friendreq: [],
         home: 'Winterfell'
       },
@@ -45,7 +45,7 @@ export default function reducer(
         fullname: 'Arya Stark',
         age: 17,
         image: 'http://img.wennermedia.com/920-width/rehost2f20162f92f132-14e00cfc-8e11-467f-90b2-cf60f7461f9a.jpg',
-        friends: [1,2,3],
+        friends: [1,2,3,9],
         friendreq: [],
         home: 'Winterfell'
       },
@@ -56,9 +56,9 @@ export default function reducer(
         fullname: 'Cersei Lannister',
         age: 37,
         image: 'https://i.pinimg.com/originals/e7/41/66/e74166adb8d99e0002fd0ee805c987c6.jpg',
-        friends: [],
-        friendreq: [],
-        home: "King's Landing"
+        friends: [7],
+        friendreq: [6],
+        home: "Kings Landing"
       },
       {
         id: 6,
@@ -73,14 +73,37 @@ export default function reducer(
       },
       {
         id: 7,
-        username: 'a',
-        password: 'a',
-        fullname: 'Mr A',
-        age: 100,
-        image: 'https://upload.wikimedia.org/wikipedia/en/5/50/Agentdalecooper.jpg',
-        friends: [],
-        friendreq: [1,2,3]
+        username: 'jdog',
+        password: 'password',
+        fullname: 'Joffrey Baratheon',
+        age: 17,
+        image: 'https://a1cf74336522e87f135f-2f21ace9a6cf0052456644b80fa06d4f.ssl.cf2.rackcdn.com/images/characters_opt/p-game-of-thrones-jack-gleeson.jpg',
+        friends: [5],
+        friendreq: [],
+        home: "Kings Landing"
       },
+      {
+        id: 8,
+        username: 'dragongirl',
+        password: 'password',
+        fullname: 'Daenerys Targaryen',
+        age: 23,
+        image: 'https://meanjin.com.au/wp-content/uploads/2019/05/Screen-Shot-2019-05-15-at-12.41.06-pm.png',
+        friends: [3],
+        friendreq: [],
+        home: "Dragonstone"
+      },
+      {
+        id: 9,
+        username: 'xcercisucksx',
+        password: 'password',
+        fullname: 'Tyrion Lannister',
+        age: 35,
+        image: 'https://media.gq.com/photos/599eeb4460e09b56c787029d/master/pass/tyrion_tout-2.jpg',
+        friends: [4,3],
+        friendreq: [],
+        home: "Kings Landing"
+      }
     ]
   }, action) {
     switch(action.type) {

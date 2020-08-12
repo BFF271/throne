@@ -44,7 +44,7 @@ class Header extends Component {
     }
 
     return (
-        <nav className='navbar navbar-expand-lg navbar-light bg-light mb-4'>
+        <nav className='mb-4 navbar navbar-expand-lg navbar-dark bg-dark'>
           <a className='navbar-brand' href='#'>Social Site</a>
           <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation'>
             <span className='navbar-toggler-icon'></span>
@@ -55,14 +55,14 @@ class Header extends Component {
               <Link to='/' className='nav-item nav-link mr-2'>List Users</Link>
               { this.props.activeUser.userId &&
                 <Link className='nav-link nav-item' to={`/profile/${this.props.activeUser.userId}`}>
-                  <img src={user.image} className='nav-profile-img mr-1' />
-                  {user.username}
+                  <div className='mr-1 d-inline-block' style={{verticalAlign: 'middle',backgroundImage:`url(${user.image})`, borderRadius: '50%', backgroundSize: 'cover', backgroundPosition: 'center top', paddingTop: '25px', width: '25px'}} />
+                  <span>{user.username}</span>
                 </Link>
               }
             </div>
             <div className='navbar-nav ml-auto'>
               {this.props.activeUser.loggedIn &&
-                <div className='navbar-item'>
+                <div className='navbar-item mr-2'>
                   <OverlayTrigger trigger='click' placement='bottom' overlay={
                     <Popover id='popover-basic'>
                       <Popover.Title as='h3'>Friend Requests</Popover.Title>
@@ -80,7 +80,7 @@ class Header extends Component {
                     </Popover>
                   }>
                     <div>
-                      <i type='button' className='fa fa-users'></i>
+                      <i type='button' className='fa fa-users mt-2'></i>
                       {friendreq.length > 0 &&
                         <div className='ml-1 badge badge-danger'>{friendreq.length}</div>
                       }

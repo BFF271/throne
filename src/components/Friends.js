@@ -39,15 +39,14 @@ class Friends extends Component {
 
     const friends = userFriends.map((user) => {
       return (
-        <div key={user.id} className='profile-friend'>
+        <div style={{width: '180px'}} class="card d-inline-block mr-3 mb-3">
           <Link to={`/profile/${user.id}`}>
-            <h5 className="u-inline-block mr-2">
-              {user.username}
-            </h5>
+            <div style={{backgroundImage:`url(${user.image})`, backgroundSize: 'cover', backgroundPosition: 'center top', paddingTop: '100%', width: '100%'}} className='card-img-top' />
 
-            <img src={user.image} alt="Profile"/>
+            <div class="p-2">
+              <h6 class="card-title mb-0">{user.fullname}</h6>
+            </div>
           </Link>
-
           {this.props.activeUserProfile &&
             <button onClick={() => this.props.dispatch(removeFriend(user.id, this.props.userProfile.id))} className='btn btn-danger profile-friend--delete'>Delete Friend</button>
           }
@@ -58,7 +57,6 @@ class Friends extends Component {
     return (
       <div>
         <h4 onClick={this.logstuff}>Friends</h4>
-
         {friends}
       </div>
     )

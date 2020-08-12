@@ -69,6 +69,7 @@ class Login extends Component {
                   className='btn btn-success'
                 />
               </form>
+              <p className='small d-block mt-1 font-italic'>(Note: ALL existing user passwords are "password")</p>
               <hr/>
             </div>
           )
