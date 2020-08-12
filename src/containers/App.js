@@ -39,7 +39,7 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter basename={'/sites/game-of-thrones-social'}>
+      <BrowserRouter>
         <React.Fragment>
           <Header />
           <div className='container'>
