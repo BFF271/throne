@@ -29,7 +29,7 @@ class Header extends Component {
         const friend = getUser(this.props.list, req);
         return (
           <div className='text-center' key={req}>
-            <Link className='mb-2 d-block' to={`/profile/${friend.id}`}>
+            <Link className='mb-2 d-block' to={`${process.env.PUBLIC_URL}/profile/${friend.id}`}>
               <img src={friend.image} className='nav-profile-img mr-1' />
               <span className='d-inline-block'>{friend.fullname}</span>
             </Link>
@@ -43,16 +43,16 @@ class Header extends Component {
 
     return (
         <nav className='mb-4 navbar navbar-expand-lg navbar-dark bg-dark'>
-          <Link to='/' className='navbar-brand'>Game of Social Networking</Link>
+          <Link to={`${process.env.PUBLIC_URL}/`} className='navbar-brand'>Game of Social Networking</Link>
           <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation'>
             <span className='navbar-toggler-icon'></span>
           </button>
           <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
             <div className='navbar-nav'>
-              <Link to='/about' className='nav-item nav-link mr-2'>About</Link>
-              <Link to='/' className='nav-item nav-link mr-2'>List Users</Link>
+              <Link to={`${process.env.PUBLIC_URL}/about`} className='nav-item nav-link mr-2'>About</Link>
+              <Link to={`${process.env.PUBLIC_URL}/`} className='nav-item nav-link mr-2'>List Users</Link>
               { this.props.activeUser.userId &&
-                <Link className='nav-link nav-item' to={`/profile/${this.props.activeUser.userId}`}>
+                <Link className='nav-link nav-item' to={`${process.env.PUBLIC_URL}/profile/${this.props.activeUser.userId}`}>
                   <div className='mr-1 d-inline-block' style={{verticalAlign: 'middle',backgroundImage:`url(${user.image})`, borderRadius: '50%', backgroundSize: 'cover', backgroundPosition: 'center top', paddingTop: '25px', width: '25px'}} />
                   <span>{user.username}</span>
                 </Link>
@@ -96,8 +96,8 @@ class Header extends Component {
                 </div>
               ) : (
                 <React.Fragment>
-                  <Link to='/login' className='nav-item nav-link' href='#'>Log In</Link>
-                  <Link to='/signup' className='nav-item nav-link' href='#'>Sign Up</Link>
+                  <Link to={`${process.env.PUBLIC_URL}/login`} className='nav-item nav-link' href='#'>Log In</Link>
+                  <Link to={`${process.env.PUBLIC_URL}/signup`} className='nav-item nav-link' href='#'>Sign Up</Link>
                 </React.Fragment>
               )}
             </div>

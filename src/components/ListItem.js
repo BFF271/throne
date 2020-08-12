@@ -47,7 +47,7 @@ class ListItem extends Component{
 
           </div>
           <div className='col-md-6'>
-            <Link to={`/profile/${this.props.user.id}`}>
+            <Link to={`${process.env.PUBLIC_URL}/profile/${this.props.user.id}`}>
               <button className='btn btn-primary u-inline-block mr-2 mb-2'>
                 View User Profile
               </button>

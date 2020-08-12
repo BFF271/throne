@@ -36,8 +36,8 @@ class Friends extends Component {
 
     const friends = userFriends.map((user) => {
       return (
-        <div style={{width: '180px'}} className='card d-inline-block mr-3 mb-3'>
-          <Link to={`/profile/${user.id}`}>
+        <div style={{width: '180px'}} key={user.id} className='card d-inline-block mr-3 mb-3'>
+          <Link to={`${process.env.PUBLIC_URL}/profile/${user.id}`}>
             <div style={{backgroundImage:`url(${user.image})`, backgroundSize: 'cover', backgroundPosition: 'center top', paddingTop: '100%', width: '100%'}} className='card-img-top' />
 
             <div className='p-2'>

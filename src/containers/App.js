@@ -39,14 +39,14 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={'/sites/game-of-thrones-social'}>
         <React.Fragment>
           <Header />
           <div className='container'>
-            <Route exact path='/about' component={About} />
-            <Route path='/signup' component={SignUp} />
-            <Route path='/login' component={Login}/>
-            <Route exact path='/' component={() => {
+            <Route exact path={`${process.env.PUBLIC_URL}/about`} component={About} />
+            <Route path={`${process.env.PUBLIC_URL}/signup`} component={SignUp} />
+            <Route path={`${process.env.PUBLIC_URL}/login`} component={Login}/>
+            <Route exact path={`${process.env.PUBLIC_URL}/`} component={() => {
               return (
                 <List
                   list={this.props.list}
@@ -57,7 +57,7 @@ class App extends Component {
             }}/>
 
             { /* Pass in the react-router-dom props via props. Gives access to .match so I can search user id --- TODO - The other routes should use this method also.*/}
-            <Route path='/profile/:id' component={Profile} />
+            <Route path={`${process.env.PUBLIC_URL}/profile/:id`} component={Profile} />
             <DevBar props={this.props}/>
           </div>
         </React.Fragment>
