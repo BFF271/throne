@@ -1,5 +1,7 @@
 ### DEMO: http://mattpilcher.co.uk/sites/game-of-thrones-social/
 
+***
+
 #### Basic Social Media App created with React / Redux using various Game Of Thrones Characters as placeholders (Created in 2017).
 ##### 2020 Update, I've fixed and added some new features however am not looking to spend a large amount of time going back to this task currently as there are other things I would like to work on. Looking at the code now there are quite a few things I would do differently mainly around how the state is managed / overall structure of the project, however it is functional and is a good exercise looking through the old code.
 
