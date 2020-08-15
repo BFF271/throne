@@ -1,3 +1,21 @@
+export function fetchUsers() {
+  return dispatch => {
+    return fetch('https://ai88nbdwxg.execute-api.eu-west-2.amazonaws.com/test/social-api')
+      .then(res => res.json())
+      .then(json => {
+        console.log('---usersJson list', json.list)
+        return dispatch({
+          type: 'SET_DEFAULT_USERS',
+          payload: {
+            users: json.list
+          }
+        })
+        // return json.products;
+      })
+      .catch(error => console.log('Fetching users failed!'));
+  };
+}
+
 export function userAdd(user) {
   return {
     type: 'USER_ADD',

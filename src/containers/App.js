@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 // Actions
-import { userDelete, userUpdate } from './../actions/userActions';
+import { userDelete, userUpdate, fetchUsers } from './../actions/userActions';
 
 // Components
 import About from './../containers/About';
@@ -35,6 +35,16 @@ class App extends Component {
 
   userDelete(user) {
     this.props.dispatch(userDelete(user));
+  }
+
+  componentDidMount() {
+    if (localStorage.getItem("socialReduxState") === null) {
+      // Users have NOT been loaded before and need to be pulled from api
+      this.props.dispatch(fetchUsers())
+    } else {
+      // Users have been loaded before and are saved, do not pull from api
+      console.log('Users already exist, dont pul from api')
+    }
   }
 
   render() {
